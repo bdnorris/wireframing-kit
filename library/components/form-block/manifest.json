@@ -1,0 +1,16 @@
+{
+  "name": "form-block",
+  "title": "Form block",
+  "description": "A short labeled form that does not submit. Use when the spec asks for a contact or request form. Not for filters, login, or multi-step flows.",
+  "category": "form",
+  "tags": ["form"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "fields": { "type": "array", "items": "string", "required": true },
+    "submitLabel": { "type": "string", "required": false, "default": "Send" }
+  },
+  "slots": [],
+  "related": ["cta-band"],
+  "since": "0.1.0"
+}

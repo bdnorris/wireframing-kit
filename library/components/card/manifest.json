@@ -1,0 +1,15 @@
+{
+  "name": "card",
+  "title": "Card",
+  "description": "One titled point with a short body. Use inside feature-grid or another slot. Not as a page section on its own and not for pricing tiers.",
+  "category": "card",
+  "tags": ["card"],
+  "status": "stable",
+  "props": {
+    "title": { "type": "string", "required": true },
+    "body": { "type": "string", "required": true }
+  },
+  "slots": [],
+  "related": ["feature-grid"],
+  "since": "0.1.0"
+}

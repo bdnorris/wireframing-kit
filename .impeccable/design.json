@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T01:34:30.470Z",
+  "title": "Design System: Wireframer",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Proof Slate",
+        "tonalRamp": [
+          "#010b1b",
+          "#152537",
+          "#304155",
+          "#4d5f74",
+          "#6f8298",
+          "#93a7be",
+          "#b8cde5",
+          "#dbf1ff"
+        ],
+        "canonical": "oklch(42.1% 0.040 251.4)"
+      },
+      "on-accent": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Proof Paper",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Sheet",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "surface-highlight": {
+        "role": "neutral",
+        "displayName": "Highlight Sheet",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Pencil Rule",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder Fill",
+        "tonalRamp": [
+          "#121211",
+          "#333330",
+          "#4e4e49",
+          "#6f6f69",
+          "#9c9c96",
+          "#c8c8c4",
+          "#dededb",
+          "#f6f6f4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page h1 in hero-split and hero-centered, capped at 16ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s, and the compact-hero h1."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card h3 and the header brand name."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text; ledes 42ch, section bodies 52ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase captions: placeholder kind, gallery eyebrows, footer fine print."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "64rem"
+      },
+      {
+        "name": "lg",
+        "value": "80rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The form-block submit button; the only filled, colored control.",
+      "html": "<button type=\"button\" class=\"ds-btn-primary\">Request a demo</button>",
+      "css": ".ds-btn-primary { padding: var(--space-inset) var(--space-gutter); border: 0; border-radius: var(--radius-control); background: var(--accent); color: var(--on-accent); font: inherit; font-family: var(--font-body); cursor: pointer; } .ds-btn-primary:focus-visible { outline: var(--border-width-focus) solid var(--text); outline-offset: var(--space-stack); }"
+    },
+    {
+      "name": "Action Chip",
+      "kind": "custom",
+      "refersTo": "button-primary",
+      "description": "The non-interactive action marker in heroes and the CTA band.",
+      "html": "<p class=\"ds-action\">Book a depot walkthrough</p>",
+      "css": ".ds-action { display: inline-block; margin: 0; padding: var(--space-inset) var(--space-gutter); background: var(--accent); color: var(--on-accent); border-radius: var(--radius-control); font-family: var(--font-body); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A labeled form-block field; label sits above and wraps the input.",
+      "html": "<label class=\"ds-field\">Work email<input class=\"ds-input\" type=\"email\" /></label>",
+      "css": ".ds-field { display: grid; gap: var(--space-stack); color: var(--text); font-family: var(--font-body); } .ds-input { padding: var(--space-inset); border: var(--border-width-hairline) solid var(--border); border-radius: var(--radius-control); background: var(--surface-raised); color: var(--text); font: inherit; } .ds-input:focus-visible { outline: var(--border-width-focus) solid var(--text); outline-offset: var(--space-stack); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "One titled point with a short body, slotted into feature-grid.",
+      "html": "<article class=\"ds-card\"><h3>Same-day dispatch</h3><p>Orders placed before noon leave the depot on the afternoon run.</p></article>",
+      "css": ".ds-card { display: grid; gap: var(--space-stack); padding: var(--space-inset); background: var(--surface-raised); border: var(--border-width-hairline) solid var(--border); border-radius: var(--radius-card); } .ds-card h3 { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: var(--heading-md); line-height: 1.15; color: var(--text); } .ds-card p { margin: 0; color: var(--text-muted); font-family: var(--font-body); line-height: 1.5; }"
+    },
+    {
+      "name": "Site Header",
+      "kind": "nav",
+      "refersTo": "site-header",
+      "description": "Serif brand on the left, plain links on the right, over a bottom hairline.",
+      "html": "<header class=\"ds-header\"><p class=\"ds-brand\">Northwind Supply</p><nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\">Depots</a><a href=\"#\">Contact</a></nav></header>",
+      "css": ".ds-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-gutter); padding: var(--space-inset) var(--space-gutter); background: var(--surface-raised); border-bottom: var(--border-width-hairline) solid var(--border); } .ds-brand { margin: 0; font-family: var(--font-heading); font-size: var(--heading-md); color: var(--text); } .ds-nav { display: flex; flex-wrap: wrap; gap: var(--space-gutter); } .ds-nav a { color: var(--text); text-decoration: none; font-family: var(--font-body); } .ds-nav a:focus-visible { outline: var(--border-width-focus) solid var(--text); outline-offset: var(--space-stack); }"
+    },
+    {
+      "name": "Media Placeholder",
+      "kind": "custom",
+      "refersTo": "media-placeholder",
+      "description": "Signature crossed box standing in for any image, map, video, or chart.",
+      "html": "<div class=\"ds-ph\" role=\"img\" aria-label=\"map: Depot coverage across the region\"><span class=\"ds-ph-label\">Depot coverage across the region</span><span class=\"ds-ph-kind\">map</span></div>",
+      "css": ".ds-ph { position: relative; display: grid; place-items: center; align-content: center; gap: var(--space-stack); min-height: calc(var(--space-section) * 2); padding: var(--space-inset); overflow: hidden; background: var(--placeholder); border: var(--border-width-hairline) solid var(--border); border-radius: var(--radius-card); font-family: var(--font-body); } .ds-ph::before, .ds-ph::after { content: ''; position: absolute; left: -25%; top: 50%; width: 150%; height: var(--border-width-hairline); background: var(--border); } .ds-ph::before { transform: rotate(22deg); } .ds-ph::after { transform: rotate(-22deg); } .ds-ph-label, .ds-ph-kind { position: relative; z-index: 1; padding: 0 var(--space-stack); background: var(--placeholder); color: var(--text); } .ds-ph-kind { color: var(--text-muted); font-size: var(--caption); text-transform: uppercase; letter-spacing: 0.04em; }"
+    },
+    {
+      "name": "CTA Band",
+      "kind": "custom",
+      "refersTo": "cta-band",
+      "description": "Closing Highlight Sheet band with one heading and one action.",
+      "html": "<section class=\"ds-cta\"><h2>See the schedule for your depot</h2><p>We will walk you through pickup windows in twenty minutes.</p><p class=\"ds-cta-action\">Talk to dispatch</p></section>",
+      "css": ".ds-cta { display: grid; justify-items: start; gap: var(--space-stack); padding: var(--space-section); background: var(--surface-highlight); border-radius: var(--radius-card); } .ds-cta h2 { margin: 0; max-width: 20ch; font-family: var(--font-heading); font-weight: 500; font-size: var(--heading-lg); line-height: 1.15; color: var(--text); } .ds-cta p { margin: 0; max-width: 46ch; color: var(--text-muted); font-family: var(--font-body); } .ds-cta .ds-cta-action { padding: var(--space-inset) var(--space-gutter); background: var(--accent); color: var(--on-accent); border-radius: var(--radius-control); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pencil Proof",
+    "overview": "A Wireframer page is a proof, not a final print. It is quiet and plainly provisional, so the people reviewing it argue about structure, hierarchy, and copy instead of color and polish. Everything is gray paper, hairline rules, and crossed boxes. The one slate accent marks the places a visitor would act. If a client looks at a screenshot and asks \"is this the final design?\", the system has failed.\n\nEvery value is a semantic token compiled from `tokens/base.json`. Components never contain a raw color or `px` length, so a skin in `tokens/skins/` can move the same pages toward mid-fidelity without touching a component. This file describes the **base** (unskinned) world. Skins are deliberate departures and are documented by their own token file, not here.\n\nThe base can be refined. Better hierarchy, rhythm, and legibility are welcome, but only within grayscale and only through tokens. Refinement must never make a proof look finished.",
+    "keyCharacteristics": [
+      "Warm-neutral gray ramp on a near-white page, with no saturated color except the action accent",
+      "Serif headings (Georgia) over system sans body: an editorial skeleton without bespoke type",
+      "Flat: hairline borders and tonal steps, no shadows",
+      "Crossed-box media placeholders labeled with kind and purpose",
+      "Generous section rhythm (4rem) with a single 1.5rem gutter"
+    ],
+    "rules": [
+      {
+        "name": "The Actions-Only Rule",
+        "body": "Proof Slate means \"a visitor would click this,\" and nothing else. It never colors decoration, section backgrounds, eyebrows, active nav, focus rings, or the annotation overlay. *Incumbent drift:* `library/layouts/Base.astro` currently uses `--accent` for the `:focus-visible` outline and for the annotation overlay's outlines and labels. Those should move to a non-action token (Graphite is the obvious candidate) in a later refinement.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-New-Hue Rule",
+        "body": "The base world has one hue. A second color belongs in a skin, never in `base.json`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Five-Step Rule",
+        "body": "There are five type sizes and no in-between values. If a component needs a new size, it needs a new semantic token, which is a schema change.",
+        "section": "typography"
+      },
+      {
+        "name": "The Four-Spaces Rule",
+        "body": "Every gap and padding is one of inset, stack, gutter, or section. A component that wants a fifth spacing value is asking for a token change.",
+        "section": "layout"
+      },
+      {
+        "name": "The Paper-Stack Rule",
+        "body": "If something needs to stand out, raise it one tonal step or give it a hairline border. Never add a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use only semantic tokens (`--surface`, `--space-gutter`, `--radius-card` …) in components and pages.",
+      "**Do** mark every image, map, video, or chart with `media-placeholder`, labeled with what it will show.",
+      "**Do** separate surfaces with one tonal step or one hairline (1px Pencil Rule).",
+      "**Do** keep text to its measure: 16ch for display, about 20ch for headlines, 42–52ch for body.",
+      "**Do** keep Proof Slate on actions only, roughly one or two per viewport."
+    ],
+    "donts": [
+      "**Don't** add hex, `rgb()`, `hsl()`, named colors, or `px` lengths outside `tokens/`.",
+      "**Don't** add shadows, gradients, or ornament. A proof that looks finished is a failed proof.",
+      "**Don't** introduce a second hue, a remote font, or a sixth type size in the base world. Those belong in a skin or a token change.",
+      "**Don't** use the accent for focus rings, overlay chrome, eyebrows, or active states.",
+      "**Don't** use stock imagery, icons as illustration, or lorem ipsum in place of a placeholder and real-sounding copy."
+    ]
+  }
+}

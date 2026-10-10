@@ -1,0 +1,18 @@
+{
+  "name": "hero-split",
+  "title": "Hero, split",
+  "description": "Page-top hero with copy on one side and media on the other. Use for landing and product pages. Not for article headers.",
+  "category": "hero",
+  "tags": ["hero", "landing", "media"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "lede": { "type": "string", "required": false },
+    "mediaSide": { "type": "enum", "values": ["left", "right"], "default": "right" },
+    "variant": { "type": "enum", "values": ["compact", "full-bleed"], "default": "full-bleed" },
+    "action": { "type": "string", "required": false }
+  },
+  "slots": ["media"],
+  "related": ["hero-centered", "media-placeholder"],
+  "since": "0.1.0"
+}

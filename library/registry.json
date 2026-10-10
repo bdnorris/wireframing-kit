@@ -1,0 +1,337 @@
+{
+  "groups": {
+    "card": [
+      {
+        "name": "card",
+        "title": "Card",
+        "description": "One titled point with a short body. Use inside feature-grid or another slot. Not as a page section on its own and not for pricing tiers.",
+        "category": "card",
+        "tags": [
+          "card"
+        ],
+        "status": "stable",
+        "props": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "body": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "slots": [],
+        "related": [
+          "feature-grid"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "section": [
+      {
+        "name": "content-section",
+        "title": "Content section",
+        "description": "A heading, one paragraph, and an optional media slot. Use for a single explanatory block. Not for heroes, card grids, or long articles.",
+        "category": "section",
+        "tags": [
+          "content"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "body": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "slots": [
+          "media"
+        ],
+        "related": [
+          "feature-grid",
+          "media-placeholder"
+        ],
+        "since": "0.1.0"
+      },
+      {
+        "name": "cta-band",
+        "title": "CTA band",
+        "description": "A closing prompt with one action. Use near the end of a page. Not for the page hero and not for a form.",
+        "category": "section",
+        "tags": [
+          "cta"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "body": {
+            "type": "string",
+            "required": false
+          },
+          "action": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "slots": [],
+        "related": [
+          "hero-centered",
+          "form-block"
+        ],
+        "since": "0.1.0"
+      },
+      {
+        "name": "feature-grid",
+        "title": "Feature grid",
+        "description": "A heading plus a row of cards. Use for three or more peer features. Not for a single story, a pricing table, or a comparison.",
+        "category": "section",
+        "tags": [
+          "features",
+          "grid"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [
+          "default"
+        ],
+        "related": [
+          "card",
+          "content-section"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "form": [
+      {
+        "name": "form-block",
+        "title": "Form block",
+        "description": "A short labeled form that does not submit. Use when the spec asks for a contact or request form. Not for filters, login, or multi-step flows.",
+        "category": "form",
+        "tags": [
+          "form"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "fields": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          },
+          "submitLabel": {
+            "type": "string",
+            "required": false,
+            "default": "Send"
+          }
+        },
+        "slots": [],
+        "related": [
+          "cta-band"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "hero": [
+      {
+        "name": "hero-centered",
+        "title": "Hero, centered",
+        "description": "Page-top hero with a single centered column and no media. Use when the spec calls for a headline without an image. Not for article titles or a split layout.",
+        "category": "hero",
+        "tags": [
+          "hero",
+          "landing"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "lede": {
+            "type": "string",
+            "required": false
+          },
+          "variant": {
+            "type": "enum",
+            "values": [
+              "compact",
+              "full-bleed"
+            ],
+            "default": "full-bleed"
+          },
+          "action": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [],
+        "related": [
+          "hero-split"
+        ],
+        "since": "0.1.0"
+      },
+      {
+        "name": "hero-split",
+        "title": "Hero, split",
+        "description": "Page-top hero with copy on one side and media on the other. Use for landing and product pages. Not for article headers.",
+        "category": "hero",
+        "tags": [
+          "hero",
+          "landing",
+          "media"
+        ],
+        "status": "stable",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "lede": {
+            "type": "string",
+            "required": false
+          },
+          "mediaSide": {
+            "type": "enum",
+            "values": [
+              "left",
+              "right"
+            ],
+            "default": "right"
+          },
+          "variant": {
+            "type": "enum",
+            "values": [
+              "compact",
+              "full-bleed"
+            ],
+            "default": "full-bleed"
+          },
+          "action": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [
+          "media"
+        ],
+        "related": [
+          "hero-centered",
+          "media-placeholder"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "placeholder": [
+      {
+        "name": "media-placeholder",
+        "title": "Media placeholder",
+        "description": "A crossed box labeled image, map, video, or chart. Use wherever the spec mentions media that is not designed yet. Not for icons, logos, or finished artwork.",
+        "category": "placeholder",
+        "tags": [
+          "image",
+          "map",
+          "video",
+          "chart"
+        ],
+        "status": "stable",
+        "props": {
+          "kind": {
+            "type": "enum",
+            "values": [
+              "image",
+              "map",
+              "video",
+              "chart"
+            ],
+            "required": true
+          },
+          "label": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "slots": [],
+        "related": [
+          "hero-split",
+          "content-section"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "footer": [
+      {
+        "name": "site-footer",
+        "title": "Site footer",
+        "description": "Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.",
+        "category": "footer",
+        "tags": [
+          "footer"
+        ],
+        "status": "stable",
+        "props": {
+          "brand": {
+            "type": "string",
+            "required": true
+          },
+          "text": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [],
+        "related": [
+          "site-header"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "header": [
+      {
+        "name": "site-header",
+        "title": "Site header",
+        "description": "Project name and primary nav across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.",
+        "category": "header",
+        "tags": [
+          "header",
+          "nav"
+        ],
+        "status": "stable",
+        "props": {
+          "brand": {
+            "type": "string",
+            "required": true
+          },
+          "labels": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          },
+          "hrefs": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          }
+        },
+        "slots": [],
+        "related": [
+          "site-footer"
+        ],
+        "since": "0.1.0"
+      }
+    ]
+  }
+}

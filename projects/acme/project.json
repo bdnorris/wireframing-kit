@@ -1,0 +1,18 @@
+{
+  "name": "acme",
+  "title": "Acme redesign",
+  "access": "access",
+  "pagesProject": "wf-acme",
+  "domain": null,
+  "allowedEmails": ["pm@acme.com"],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Product", "href": "/product" },
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "skin": null,
+  "includeGallery": false,
+  "annotations": true,
+  "fixtureCopy": "Acme walkthrough"
+}

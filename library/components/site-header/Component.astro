@@ -1,0 +1,61 @@
+---
+interface Props {
+  brand: string;
+  labels: string[];
+  hrefs: string[];
+  note?: string;
+}
+
+const { brand, labels, hrefs, note } = Astro.props;
+
+if (labels.length !== hrefs.length) {
+  throw new Error(`site-header expected ${labels.length} hrefs and received ${hrefs.length}.`);
+}
+---
+
+<header data-component="site-header" data-note={note}>
+  <div class="bar">
+    <p class="brand">{brand}</p>
+    <nav>
+      {
+        labels.map((label, index) => (
+          <a href={hrefs[index]}>{label}</a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: var(--border-width-hairline) solid var(--border);
+    background: var(--surface-raised);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-gutter);
+    width: min(100%, var(--breakpoint-lg));
+    margin-inline: auto;
+    padding: var(--space-inset) var(--space-gutter);
+  }
+
+  .brand {
+    font-family: var(--font-heading);
+    font-size: var(--heading-md);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-gutter);
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+  }
+</style>

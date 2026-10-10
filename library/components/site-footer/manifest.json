@@ -1,0 +1,15 @@
+{
+  "name": "site-footer",
+  "title": "Site footer",
+  "description": "Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.",
+  "category": "footer",
+  "tags": ["footer"],
+  "status": "stable",
+  "props": {
+    "brand": { "type": "string", "required": true },
+    "text": { "type": "string", "required": false }
+  },
+  "slots": [],
+  "related": ["site-header"],
+  "since": "0.1.0"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "feature-grid",
+  "title": "Feature grid",
+  "description": "A heading plus a row of cards. Use for three or more peer features. Not for a single story, a pricing table, or a comparison.",
+  "category": "section",
+  "tags": ["features", "grid"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": false }
+  },
+  "slots": ["default"],
+  "related": ["card", "content-section"],
+  "since": "0.1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "wireframer",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "registry": "node scripts/build-registry.mjs",
+    "predev": "node scripts/build-tokens.mjs && node scripts/build-registry.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/build-tokens.mjs && node scripts/build-registry.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "validate": "node scripts/validate.mjs",
+    "leak-check": "node scripts/leak-check.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "new-component": "node scripts/new-component.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "astro": "^7.3.8",
+    "postcss": "^8.5.29",
+    "postcss-html": "^2.0.0",
+    "style-dictionary": "^5.6.0",
+    "stylelint": "^17.16.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.5"
+  }
+}

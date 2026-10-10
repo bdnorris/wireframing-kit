@@ -1,0 +1,15 @@
+---
+import Base from '../Base.astro';
+
+interface Props {
+  project: string;
+  title: string;
+  nav?: { label: string; href: string }[];
+}
+
+const props = Astro.props;
+---
+
+<Base {...props} variant="default">
+  <slot />
+</Base>

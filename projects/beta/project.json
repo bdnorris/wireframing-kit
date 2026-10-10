@@ -1,0 +1,13 @@
+{
+  "name": "beta",
+  "title": "Northwind Supply",
+  "access": "none",
+  "pagesProject": "wf-beta",
+  "domain": null,
+  "allowedEmails": [],
+  "nav": [{ "label": "Home", "href": "/" }],
+  "skin": null,
+  "includeGallery": false,
+  "annotations": false,
+  "fixtureCopy": "Northwind depot schedule"
+}

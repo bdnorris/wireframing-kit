@@ -1,0 +1,10 @@
+card	card	One titled point with a short body. Use inside feature-grid or another slot. Not as a page section on its own and not for pricing tiers.
+content-section	section	A heading, one paragraph, and an optional media slot. Use for a single explanatory block. Not for heroes, card grids, or long articles.
+cta-band	section	A closing prompt with one action. Use near the end of a page. Not for the page hero and not for a form.
+feature-grid	section	A heading plus a row of cards. Use for three or more peer features. Not for a single story, a pricing table, or a comparison.
+form-block	form	A short labeled form that does not submit. Use when the spec asks for a contact or request form. Not for filters, login, or multi-step flows.
+hero-centered	hero	Page-top hero with a single centered column and no media. Use when the spec calls for a headline without an image. Not for article titles or a split layout.
+hero-split	hero	Page-top hero with copy on one side and media on the other. Use for landing and product pages. Not for article headers.
+media-placeholder	placeholder	A crossed box labeled image, map, video, or chart. Use wherever the spec mentions media that is not designed yet. Not for icons, logos, or finished artwork.
+site-footer	footer	Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.
+site-header	header	Project name and primary nav across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.

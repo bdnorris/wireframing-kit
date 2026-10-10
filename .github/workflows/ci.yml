@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm run registry
+      - run: git diff --exit-code -- library/registry.json library/registry.txt projects/*/registry.json projects/*/registry.txt
+      - run: PROJECT=acme npm run build
+      - run: node scripts/leak-check.mjs acme

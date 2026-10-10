@@ -1,0 +1,42 @@
+---
+import Layout from '@layouts/landing';
+import HeroSplit from '@c/hero-split';
+import MediaPlaceholder from '@c/media-placeholder';
+import FeatureGrid from '@c/feature-grid';
+import Card from '@c/card';
+import ContentSection from '@c/content-section';
+import FormBlock from '@c/form-block';
+import CtaBand from '@c/cta-band';
+---
+
+<Layout project="acme" title="Acme redesign">
+  <HeroSplit
+    heading="See the work before you build it"
+    lede="An Acme walkthrough your team can review before any visual design starts."
+    mediaSide="right"
+    action="Request a review"
+  >
+    <MediaPlaceholder slot="media" kind="image" label="Product screenshot" />
+  </HeroSplit>
+  <FeatureGrid heading="What the walkthrough covers">
+    <Card title="Page structure" body="Headers, heroes, and sections in the order the spec describes." />
+    <Card title="Real copy" body="Short lines that sound like the product, so the review is about the content." />
+    <Card title="Named blocks" body="Press A and every section shows the name to use in feedback." />
+  </FeatureGrid>
+  <ContentSection
+    heading="How a review works"
+    body="Click through the pages, press A to see block names, and send notes back against those names."
+  >
+    <MediaPlaceholder slot="media" kind="chart" label="Review flow" />
+  </ContentSection>
+  <FormBlock
+    heading="Ask for a walkthrough"
+    fields={['Name', 'Work email', 'What you want to review']}
+    submitLabel="Request time"
+  />
+  <CtaBand
+    heading="Book a walkthrough"
+    body="Thirty minutes on the prototype, with the spec open beside it."
+    action="Talk to the team"
+  />
+</Layout>

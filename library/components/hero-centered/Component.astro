@@ -1,0 +1,56 @@
+---
+interface Props {
+  heading: string;
+  lede?: string;
+  variant?: 'compact' | 'full-bleed';
+  action?: string;
+  note?: string;
+}
+
+const { heading, lede, variant = 'full-bleed', action, note } = Astro.props;
+---
+
+<section data-component="hero-centered" data-note={note} class:list={['hero', variant]}>
+  <h1>{heading}</h1>
+  {lede && <p>{lede}</p>}
+  {action && <p class="action">{action}</p>}
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-stack);
+    padding: var(--space-section) var(--space-gutter);
+    text-align: center;
+  }
+
+  .hero.full-bleed {
+    background: var(--surface-raised);
+  }
+
+  .hero.compact {
+    padding-block: var(--space-gutter);
+  }
+
+  h1 {
+    font-size: var(--heading-xl);
+    max-width: 16ch;
+  }
+
+  .compact h1 {
+    font-size: var(--heading-lg);
+  }
+
+  p {
+    max-width: 42ch;
+    color: var(--text-muted);
+  }
+
+  .action {
+    padding: var(--space-inset) var(--space-gutter);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: var(--radius-control);
+  }
+</style>

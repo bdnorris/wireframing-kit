@@ -1,0 +1,69 @@
+---
+interface Props {
+  heading: string;
+  fields: string[];
+  submitLabel?: string;
+  note?: string;
+}
+
+const { heading, fields, submitLabel = 'Send', note } = Astro.props;
+
+function fieldId(field: string): string {
+  return field.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+---
+
+<form data-component="form-block" data-note={note}>
+  <h2>{heading}</h2>
+  {
+    fields.map((field) => {
+      const id = fieldId(field);
+      const type = field.toLowerCase().includes('email') ? 'email' : 'text';
+      return (
+        <label for={id}>
+          {field}
+          <input id={id} name={id} type={type} />
+        </label>
+      );
+    })
+  }
+  <button type="button">{submitLabel}</button>
+</form>
+
+<style>
+  form {
+    display: grid;
+    gap: var(--space-stack);
+    max-width: var(--breakpoint-sm);
+    margin: var(--space-section) var(--space-gutter);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  label {
+    display: grid;
+    gap: var(--space-stack);
+    color: var(--text);
+  }
+
+  input {
+    padding: var(--space-inset);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-control);
+    background: var(--surface-raised);
+    color: var(--text);
+    font: inherit;
+  }
+
+  button {
+    justify-self: start;
+    padding: var(--space-inset) var(--space-gutter);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: var(--accent);
+    color: var(--on-accent);
+    font: inherit;
+  }
+</style>

@@ -1,0 +1,55 @@
+---
+import { readProject } from '../../library/runtime/read-project';
+import DevIndex from '../dev/Index.astro';
+import Gallery from '../gallery/Gallery.astro';
+
+interface PageModule {
+  default: import('astro').AstroComponentFactory;
+}
+
+interface RouteProps {
+  kind: 'index' | 'gallery' | 'page';
+  moduleId?: string;
+}
+
+export function getStaticPaths(): { params: { slug: string | undefined }; props: RouteProps }[] {
+  const pages = import.meta.glob('../../projects/*/pages/**/*.astro', { eager: true });
+  const target = process.env.PROJECT;
+  const paths: { params: { slug: string | undefined }; props: RouteProps }[] = [];
+
+  if (!target) {
+    paths.push({ params: { slug: undefined }, props: { kind: 'index' } });
+  }
+
+  for (const moduleId of Object.keys(pages)) {
+    const match = moduleId.match(/projects\/([^/]+)\/pages\/(.+)\.astro$/);
+    if (!match) continue;
+    const [, project, pagePath] = match;
+    if (target && project !== target) continue;
+    const page = pagePath === 'index' ? '' : pagePath;
+    const slug = target ? page : [project, page].filter(Boolean).join('/');
+    paths.push({
+      params: { slug: slug || undefined },
+      props: { kind: 'page', moduleId },
+    });
+  }
+
+  const includeGallery = target ? readProject(target).includeGallery : true;
+  if (includeGallery) {
+    paths.push({ params: { slug: '_gallery' }, props: { kind: 'gallery' } });
+  }
+
+  return paths;
+}
+
+const pages = import.meta.glob('../../projects/*/pages/**/*.astro', { eager: true }) as Record<
+  string,
+  PageModule
+>;
+const { kind, moduleId } = Astro.props as RouteProps;
+const Page = kind === 'page' && moduleId ? pages[moduleId].default : null;
+---
+
+{kind === 'index' && <DevIndex />}
+{kind === 'gallery' && <Gallery />}
+{Page && <Page />}

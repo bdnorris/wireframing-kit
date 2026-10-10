@@ -1,0 +1,150 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import '../../src/styles/tokens.css';
+import SiteHeader from '../components/site-header/Component.astro';
+import SiteFooter from '../components/site-footer/Component.astro';
+import { readProject } from '../runtime/read-project';
+
+interface Props {
+  project: string;
+  title: string;
+  nav?: { label: string; href: string }[];
+  variant: 'default' | 'landing' | 'app';
+}
+
+const { project, title, nav, variant } = Astro.props;
+const config = readProject(project);
+const prefix = process.env.PROJECT ? '' : `/${config.name}`;
+const links = (nav ?? config.nav).map((link) => ({
+  label: link.label,
+  href: link.href === '/' ? `${prefix}/` : `${prefix}${link.href}`,
+}));
+const stylesheet = path.join(process.cwd(), 'src', 'styles', 'tokens.css');
+if (!fs.existsSync(stylesheet)) {
+  throw new Error('tokens.css is missing. Run npm run tokens.');
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body data-project={config.name}>
+    <SiteHeader brand={config.title} labels={links.map((link) => link.label)} hrefs={links.map((link) => link.href)} />
+    {
+      variant === 'app' ? (
+        <div class:list={['frame', variant]}>
+          <aside>
+            <slot name="sidebar" />
+          </aside>
+          <main>
+            <slot />
+          </main>
+        </div>
+      ) : (
+        <main class:list={['frame', variant]}>
+          <slot />
+        </main>
+      )
+    }
+    <SiteFooter brand={config.title} text="Wireframe prototype" />
+    {
+      config.annotations && (
+        <script>
+          document.addEventListener('keydown', (event) => {
+            if (event.key.toLowerCase() !== 'a' || event.metaKey || event.ctrlKey || event.altKey) return;
+            const target = event.target;
+            if (target instanceof HTMLElement && target.closest('input, textarea, select')) return;
+            document.documentElement.classList.toggle('wf-annotate');
+          });
+        </script>
+      )
+    }
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--body);
+    line-height: 1.5;
+  }
+
+  :global(h1),
+  :global(h2),
+  :global(h3) {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  :global(p) {
+    margin: 0;
+  }
+
+  :global(:focus-visible) {
+    outline: var(--border-width-focus) solid var(--accent);
+    outline-offset: var(--space-stack);
+  }
+
+  .frame {
+    width: min(100%, var(--breakpoint-lg));
+    margin-inline: auto;
+  }
+
+  .frame.landing {
+    width: 100%;
+  }
+
+  .frame.app {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+    padding: var(--space-gutter);
+  }
+
+  aside {
+    padding: var(--space-inset);
+    background: var(--surface-raised);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .frame.app {
+      grid-template-columns: 1fr 3fr;
+      align-items: start;
+    }
+  }
+
+  :global(html.wf-annotate [data-component]) {
+    outline: var(--border-width-focus) solid var(--accent);
+    outline-offset: var(--space-stack);
+    position: relative;
+  }
+
+  :global(html.wf-annotate [data-component]::after) {
+    content: attr(data-component);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: var(--space-inset);
+    padding: 0 var(--space-stack);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-body);
+    font-size: var(--caption);
+    line-height: 1.4;
+  }
+</style>

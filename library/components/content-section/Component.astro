@@ -1,0 +1,55 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  note?: string;
+}
+
+const { heading, body, note } = Astro.props;
+const hasMedia = Astro.slots.has('media');
+---
+
+<section data-component="content-section" data-note={note} class:list={[{ 'with-media': hasMedia }]}>
+  <div class="copy">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+  </div>
+  {
+    hasMedia && (
+      <div class="media">
+        <slot name="media" />
+      </div>
+    )
+  }
+</section>
+
+<style>
+  section {
+    display: grid;
+    gap: var(--space-gutter);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  .copy {
+    display: grid;
+    gap: var(--space-stack);
+    align-content: center;
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+    max-width: 22ch;
+  }
+
+  p {
+    max-width: 52ch;
+    color: var(--text-muted);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .with-media {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+</style>

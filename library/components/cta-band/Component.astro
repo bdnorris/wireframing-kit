@@ -1,0 +1,45 @@
+---
+interface Props {
+  heading: string;
+  body?: string;
+  action: string;
+  note?: string;
+}
+
+const { heading, body, action, note } = Astro.props;
+---
+
+<section data-component="cta-band" data-note={note}>
+  <h2>{heading}</h2>
+  {body && <p>{body}</p>}
+  <p class="action">{action}</p>
+</section>
+
+<style>
+  section {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-stack);
+    margin: var(--space-gutter);
+    padding: var(--space-section);
+    background: var(--surface-highlight);
+    border-radius: var(--radius-card);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+    max-width: 20ch;
+  }
+
+  p {
+    max-width: 46ch;
+    color: var(--text-muted);
+  }
+
+  .action {
+    padding: var(--space-inset) var(--space-gutter);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: var(--radius-control);
+  }
+</style>

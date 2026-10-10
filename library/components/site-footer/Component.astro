@@ -1,0 +1,38 @@
+---
+interface Props {
+  brand: string;
+  text?: string;
+  note?: string;
+}
+
+const { brand, text, note } = Astro.props;
+---
+
+<footer data-component="site-footer" data-note={note}>
+  <div class="bar">
+    <p>{brand}</p>
+    {text && <p class="muted">{text}</p>}
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: var(--border-width-hairline) solid var(--border);
+    background: var(--surface-raised);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-gutter);
+    width: min(100%, var(--breakpoint-lg));
+    margin-inline: auto;
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  .muted {
+    color: var(--text-muted);
+    font-size: var(--caption);
+  }
+</style>

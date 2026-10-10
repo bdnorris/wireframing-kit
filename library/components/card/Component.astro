@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  note?: string;
+}
+
+const { title, body, note } = Astro.props;
+---
+
+<article data-component="card" data-note={note}>
+  <h3>{title}</h3>
+  <p>{body}</p>
+</article>
+
+<style>
+  article {
+    display: grid;
+    gap: var(--space-stack);
+    padding: var(--space-inset);
+    background: var(--surface-raised);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  h3 {
+    font-size: var(--heading-md);
+  }
+
+  p {
+    color: var(--text-muted);
+  }
+</style>

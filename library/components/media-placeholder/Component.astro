@@ -1,0 +1,70 @@
+---
+interface Props {
+  kind: 'image' | 'map' | 'video' | 'chart';
+  label: string;
+  note?: string;
+}
+
+const { kind, label, note } = Astro.props;
+---
+
+<div
+  data-component="media-placeholder"
+  data-note={note}
+  class="placeholder"
+  role="img"
+  aria-label={`${kind}: ${label}`}
+>
+  <span class="label">{label}</span>
+  <span class="kind">{kind}</span>
+</div>
+
+<style>
+  .placeholder {
+    position: relative;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: var(--space-stack);
+    min-height: calc(var(--space-section) + var(--space-section));
+    padding: var(--space-inset);
+    overflow: hidden;
+    background: var(--placeholder);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .placeholder::before,
+  .placeholder::after {
+    content: '';
+    position: absolute;
+    left: -25%;
+    top: 50%;
+    width: 150%;
+    height: var(--border-width-hairline);
+    background: var(--border);
+  }
+
+  .placeholder::before {
+    transform: rotate(22deg);
+  }
+
+  .placeholder::after {
+    transform: rotate(-22deg);
+  }
+
+  .label,
+  .kind {
+    position: relative;
+    z-index: 1;
+    padding: 0 var(--space-stack);
+    background: var(--placeholder);
+  }
+
+  .kind {
+    color: var(--text-muted);
+    font-size: var(--caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>

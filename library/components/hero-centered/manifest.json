@@ -1,0 +1,17 @@
+{
+  "name": "hero-centered",
+  "title": "Hero, centered",
+  "description": "Page-top hero with a single centered column and no media. Use when the spec calls for a headline without an image. Not for article titles or a split layout.",
+  "category": "hero",
+  "tags": ["hero", "landing"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "lede": { "type": "string", "required": false },
+    "variant": { "type": "enum", "values": ["compact", "full-bleed"], "default": "full-bleed" },
+    "action": { "type": "string", "required": false }
+  },
+  "slots": [],
+  "related": ["hero-split"],
+  "since": "0.1.0"
+}

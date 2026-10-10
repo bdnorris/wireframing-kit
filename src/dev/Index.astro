@@ -1,0 +1,81 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import '../styles/tokens.css';
+
+const projectsDir = path.join(process.cwd(), 'projects');
+const projects = fs
+  .readdirSync(projectsDir, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Wireframes</title>
+  </head>
+  <body>
+    <main>
+      <h1>Wireframes</h1>
+      <p>Local dev is serving every project. A filtered build uses one project at the site root.</p>
+      <ul>
+        {
+          projects.map((project) => (
+            <li>
+              <a href={`/${project}/`}>{project}</a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/_gallery">Component gallery</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--body);
+    line-height: 1.5;
+  }
+
+  main {
+    display: grid;
+    gap: var(--space-stack);
+    width: min(100%, var(--breakpoint-md));
+    margin-inline: auto;
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--heading-xl);
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-stack);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--text);
+  }
+</style>

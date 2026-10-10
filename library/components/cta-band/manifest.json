@@ -1,0 +1,16 @@
+{
+  "name": "cta-band",
+  "title": "CTA band",
+  "description": "A closing prompt with one action. Use near the end of a page. Not for the page hero and not for a form.",
+  "category": "section",
+  "tags": ["cta"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "body": { "type": "string", "required": false },
+    "action": { "type": "string", "required": true }
+  },
+  "slots": [],
+  "related": ["hero-centered", "form-block"],
+  "since": "0.1.0"
+}

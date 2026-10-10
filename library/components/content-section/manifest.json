@@ -1,0 +1,15 @@
+{
+  "name": "content-section",
+  "title": "Content section",
+  "description": "A heading, one paragraph, and an optional media slot. Use for a single explanatory block. Not for heroes, card grids, or long articles.",
+  "category": "section",
+  "tags": ["content"],
+  "status": "stable",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "body": { "type": "string", "required": true }
+  },
+  "slots": ["media"],
+  "related": ["feature-grid", "media-placeholder"],
+  "since": "0.1.0"
+}

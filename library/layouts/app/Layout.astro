@@ -1,0 +1,16 @@
+---
+import Base from '../Base.astro';
+
+interface Props {
+  project: string;
+  title: string;
+  nav?: { label: string; href: string }[];
+}
+
+const props = Astro.props;
+---
+
+<Base {...props} variant="app">
+  <slot name="sidebar" slot="sidebar" />
+  <slot />
+</Base>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  heading?: string;
+  note?: string;
+}
+
+const { heading, note } = Astro.props;
+---
+
+<section data-component="feature-grid" data-note={note} class="section">
+  {heading && <h2>{heading}</h2>}
+  <div class="grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: var(--space-gutter);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

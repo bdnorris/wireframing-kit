@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "title", "description", "category", "status", "props", "since"],
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "category": {
+      "enum": [
+        "layout",
+        "header",
+        "footer",
+        "hero",
+        "section",
+        "card",
+        "form",
+        "navigation",
+        "placeholder"
+      ]
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "status": { "enum": ["draft", "stable", "deprecated"] },
+    "props": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/prop" }
+    },
+    "slots": { "type": "array", "items": { "type": "string" } },
+    "related": { "type": "array", "items": { "type": "string" } },
+    "since": { "type": "string", "minLength": 1 },
+    "overrides": { "type": "string", "minLength": 1 },
+    "overrideReason": { "type": "string", "minLength": 1 },
+    "replacedBy": { "type": "string", "minLength": 1 }
+  },
+  "dependentRequired": {
+    "overrides": ["overrideReason"]
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "deprecated" } },
+        "required": ["status"]
+      },
+      "then": { "required": ["replacedBy"] }
+    }
+  ],
+  "$defs": {
+    "prop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["string", "enum", "number", "boolean", "array"] },
+        "required": { "type": "boolean" },
+        "default": {},
+        "values": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "items": { "enum": ["string", "number", "boolean"] }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": { "const": "enum" } },
+            "required": ["type"]
+          },
+          "then": { "required": ["values"] }
+        },
+        {
+          "if": {
+            "properties": { "type": { "const": "array" } },
+            "required": ["type"]
+          },
+          "then": { "required": ["items"] }
+        }
+      ]
+    }
+  }
+}

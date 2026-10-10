@@ -1,0 +1,16 @@
+{
+  "name": "site-header",
+  "title": "Site header",
+  "description": "Project name and primary nav across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.",
+  "category": "header",
+  "tags": ["header", "nav"],
+  "status": "stable",
+  "props": {
+    "brand": { "type": "string", "required": true },
+    "labels": { "type": "array", "items": "string", "required": true },
+    "hrefs": { "type": "array", "items": "string", "required": true }
+  },
+  "slots": [],
+  "related": ["site-footer"],
+  "since": "0.1.0"
+}

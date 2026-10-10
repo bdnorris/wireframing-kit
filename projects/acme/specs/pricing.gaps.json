@@ -1,0 +1,23 @@
+{
+  "page": "pricing",
+  "gaps": [
+    {
+      "section": "Three pricing tiers, middle one highlighted, monthly/annual toggle",
+      "proposal": "new-component",
+      "approach": "A pricing-tiers section that slots price-tier children.",
+      "status": "proposed"
+    },
+    {
+      "section": "Feature comparison table, 12 rows",
+      "proposal": "new-component",
+      "approach": "A comparison-table component for a header row and simple body rows.",
+      "status": "proposed"
+    },
+    {
+      "section": "FAQ accordion, 6 questions",
+      "proposal": "new-component",
+      "approach": "An faq-accordion with a question and answer for each item.",
+      "status": "proposed"
+    }
+  ]
+}

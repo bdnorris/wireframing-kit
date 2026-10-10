@@ -1,0 +1,136 @@
+---
+import '../styles/tokens.css';
+import registry from '../../library/registry.json';
+
+interface Manifest {
+  name: string;
+  title: string;
+  description: string;
+  status: string;
+  category: string;
+}
+
+interface ExampleModule {
+  default: import('astro').AstroComponentFactory;
+}
+
+const examples = import.meta.glob('../../library/components/*/example.astro', {
+  eager: true,
+}) as Record<string, ExampleModule>;
+
+const groups = registry.groups as Record<string, Manifest[]>;
+const items = Object.entries(groups).flatMap(([category, manifests]) =>
+  manifests.map((manifest) => {
+    const key = Object.keys(examples).find((file) => file.includes(`/components/${manifest.name}/example.astro`));
+    const Example = key ? examples[key].default : null;
+    return { category, manifest, Example };
+  }),
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Component gallery</title>
+  </head>
+  <body>
+    <header>
+      <p>Library</p>
+      <h1>Component gallery</h1>
+    </header>
+    {
+      items.map(({ manifest, Example }) => (
+        <article id={manifest.name}>
+          <div class="meta">
+            <p class="eyebrow">{manifest.category}</p>
+            <h2>{manifest.title}</h2>
+            <p>{manifest.description}</p>
+            <p class="status">{manifest.status}</p>
+          </div>
+          <div class="preview">{Example && <Example />}</div>
+        </article>
+      ))
+    }
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--body);
+    line-height: 1.5;
+  }
+
+  :global(h1),
+  :global(h2) {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  :global(p) {
+    margin: 0;
+  }
+
+  header,
+  article {
+    width: min(100%, var(--breakpoint-lg));
+    margin-inline: auto;
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  header {
+    display: grid;
+    gap: var(--space-stack);
+  }
+
+  h1 {
+    font-size: var(--heading-xl);
+  }
+
+  article {
+    display: grid;
+    gap: var(--space-gutter);
+    border-top: var(--border-width-hairline) solid var(--border);
+  }
+
+  .meta {
+    display: grid;
+    gap: var(--space-stack);
+  }
+
+  .eyebrow,
+  .status {
+    color: var(--text-muted);
+    font-size: var(--caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  .preview {
+    background: var(--surface-raised);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    article {
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+    }
+  }
+</style>

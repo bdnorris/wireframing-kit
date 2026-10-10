@@ -1,0 +1,15 @@
+{
+  "name": "media-placeholder",
+  "title": "Media placeholder",
+  "description": "A crossed box labeled image, map, video, or chart. Use wherever the spec mentions media that is not designed yet. Not for icons, logos, or finished artwork.",
+  "category": "placeholder",
+  "tags": ["image", "map", "video", "chart"],
+  "status": "stable",
+  "props": {
+    "kind": { "type": "enum", "values": ["image", "map", "video", "chart"], "required": true },
+    "label": { "type": "string", "required": true }
+  },
+  "slots": [],
+  "related": ["hero-split", "content-section"],
+  "since": "0.1.0"
+}
