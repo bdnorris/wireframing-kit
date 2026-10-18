@@ -1,0 +1,11 @@
+{
+  "page": "new-job",
+  "gaps": [
+    {
+      "section": "Form with text fields, textarea fields, a select dropdown, a radio group, and checkboxes",
+      "proposal": "new-component",
+      "approach": "A generic form component supporting text inputs, textareas, a select menu, a radio group, and checkboxes.",
+      "status": "approved"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+import Component from './Component.astro';
+---
+
+<Component
+  heading="Add a role to track"
+  textFields={['Company', 'Role title', 'Compensation range']}
+  textareaFields={['Role summary', 'Notes and next steps']}
+  selectLabel="Stage"
+  selectOptions={['Vetting', 'Applied', 'Rejected']}
+  radioLabel="Work mode"
+  radioOptions={['Remote', 'Hybrid', 'On-site']}
+  checkboxes={['Referral available', 'Portfolio submitted']}
+  submitLabel="Save role"
+/>

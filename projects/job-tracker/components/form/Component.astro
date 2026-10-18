@@ -1,0 +1,188 @@
+---
+interface Props {
+  heading: string;
+  textFields: string[];
+  textareaFields?: string[];
+  selectLabel?: string;
+  selectOptions?: string[];
+  radioLabel?: string;
+  radioOptions?: string[];
+  checkboxes?: string[];
+  submitLabel?: string;
+  note?: string;
+}
+
+const {
+  heading,
+  textFields,
+  textareaFields = [],
+  selectLabel,
+  selectOptions = [],
+  radioLabel,
+  radioOptions = [],
+  checkboxes = [],
+  submitLabel = 'Save',
+  note,
+} = Astro.props;
+
+function slugify(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+---
+
+<form data-component="form" data-note={note}>
+  <h2>{heading}</h2>
+
+  {
+    textFields.map((field) => {
+      const id = `text-${slugify(field)}`;
+      return (
+        <label class="field" for={id}>
+          <span>{field}</span>
+          <input id={id} name={id} type="text" />
+        </label>
+      );
+    })
+  }
+
+  {
+    selectLabel && selectOptions.length > 0 && (
+      <label class="field" for={`select-${slugify(selectLabel)}`}>
+        <span>{selectLabel}</span>
+        <select id={`select-${slugify(selectLabel)}`} name={`select-${slugify(selectLabel)}`}>
+          {selectOptions.map((option) => (
+            <option value={slugify(option)}>{option}</option>
+          ))}
+        </select>
+      </label>
+    )
+  }
+
+  {
+    radioLabel && radioOptions.length > 0 && (
+      <fieldset class="group">
+        <legend>{radioLabel}</legend>
+        <div class="options">
+          {radioOptions.map((option, index) => {
+            const id = `radio-${slugify(radioLabel)}-${slugify(option)}`;
+            return (
+              <label class="choice" for={id}>
+                <input
+                  id={id}
+                  type="radio"
+                  name={`radio-${slugify(radioLabel)}`}
+                  value={slugify(option)}
+                  checked={index === 0}
+                />
+                <span>{option}</span>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
+    )
+  }
+
+  {
+    textareaFields.map((field) => {
+      const id = `textarea-${slugify(field)}`;
+      return (
+        <label class="field" for={id}>
+          <span>{field}</span>
+          <textarea id={id} name={id} rows={4} />
+        </label>
+      );
+    })
+  }
+
+  {
+    checkboxes.length > 0 && (
+      <fieldset class="group">
+        <legend>Options</legend>
+        <div class="options">
+          {checkboxes.map((item) => {
+            const id = `check-${slugify(item)}`;
+            return (
+              <label class="choice" for={id}>
+                <input id={id} name={id} type="checkbox" />
+                <span>{item}</span>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
+    )
+  }
+
+  <button type="button">{submitLabel}</button>
+</form>
+
+<style>
+  form {
+    display: grid;
+    gap: var(--space-gutter);
+    max-width: var(--breakpoint-sm);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  .field {
+    display: grid;
+    gap: var(--space-stack);
+    color: var(--text);
+  }
+
+  input[type='text'],
+  select,
+  textarea {
+    width: 100%;
+    padding: var(--space-inset);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-control);
+    background: var(--surface-raised);
+    color: var(--text);
+    font: inherit;
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-stack);
+    margin: 0;
+    padding: var(--space-inset);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-control);
+  }
+
+  legend {
+    padding: 0 var(--space-stack);
+    color: var(--text);
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-gutter);
+  }
+
+  .choice {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-stack);
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  button {
+    justify-self: start;
+    padding: var(--space-inset) var(--space-gutter);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: var(--accent);
+    color: var(--on-accent);
+    font: inherit;
+    cursor: pointer;
+  }
+</style>

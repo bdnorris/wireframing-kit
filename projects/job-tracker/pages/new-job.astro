@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/default';
+import Form from '@c/form';
+---
+
+<Layout project="job-tracker" title="New job — Job tracker">
+  <Form
+    heading="Add a role to track"
+    textFields={['Company', 'Role title', 'Compensation range']}
+    textareaFields={['Role summary', 'Notes and next steps']}
+    selectLabel="Stage"
+    selectOptions={['Vetting', 'Applied', 'Rejected']}
+    radioLabel="Work mode"
+    radioOptions={['Remote', 'Hybrid', 'On-site']}
+    checkboxes={['Referral available', 'Portfolio submitted']}
+    submitLabel="Save role"
+  />
+</Layout>

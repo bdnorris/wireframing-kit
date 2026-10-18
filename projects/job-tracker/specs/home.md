@@ -4,7 +4,7 @@ layout: default
 ---
 
 1. Tabs under the heading "Roles still in vetting". Labels: Vetting (selected), Applied, Rejected.
-2. Each tab panel contains a card list with a List / Grid view toggle and role cards showing a title, short description, updated date, and 2–4 tags:
+2. Each tab panel contains a card list with Sort (Date / Name) and View (List / Grid) controls, and role cards showing a title, short description, updated date, and 2–4 tags:
 
 Vetting
 - Northline — Staff product designer — Portfolio is in; waiting on a hiring-manager screen (Updated Oct 16) [Remote, Design systems, Series B]

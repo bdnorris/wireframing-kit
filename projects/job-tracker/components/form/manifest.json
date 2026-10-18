@@ -1,0 +1,22 @@
+{
+  "name": "form",
+  "title": "Form",
+  "description": "A multi-control form with text inputs, textareas, a select dropdown, a radio group, and checkboxes. Use when a spec calls for creating or editing a record with varied field types. Not for a short contact form (use form-block), search bars, or inline table filters.",
+  "category": "form",
+  "tags": ["form", "inputs", "select", "radio", "checkbox"],
+  "status": "draft",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "textFields": { "type": "array", "items": "string", "required": true },
+    "textareaFields": { "type": "array", "items": "string", "required": false },
+    "selectLabel": { "type": "string", "required": false },
+    "selectOptions": { "type": "array", "items": "string", "required": false },
+    "radioLabel": { "type": "string", "required": false },
+    "radioOptions": { "type": "array", "items": "string", "required": false },
+    "checkboxes": { "type": "array", "items": "string", "required": false },
+    "submitLabel": { "type": "string", "required": false, "default": "Save" }
+  },
+  "slots": [],
+  "related": ["form-block"],
+  "since": "0.1.0"
+}

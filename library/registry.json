@@ -329,6 +329,10 @@
           "action": {
             "type": "string",
             "required": false
+          },
+          "actionHref": {
+            "type": "string",
+            "required": false
           }
         },
         "slots": [],

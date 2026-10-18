@@ -6,6 +6,8 @@
   "domain": null,
   "allowedEmails": [],
   "nav": [{ "label": "Jobs", "href": "/" }],
+  "action": "New job",
+  "actionHref": "/new-job",
   "skin": null,
   "includeGallery": false,
   "annotations": true,

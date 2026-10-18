@@ -45,12 +45,13 @@
       {
         "name": "card-list",
         "title": "Card list",
-        "description": "A collection of cards with a toggle to switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.",
+        "description": "A collection of cards with controls to sort by name or date and switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.",
         "category": "section",
         "tags": [
           "list",
           "grid",
-          "cards"
+          "cards",
+          "sort"
         ],
         "status": "draft",
         "props": {
@@ -62,6 +63,15 @@
             ],
             "required": false,
             "default": "list"
+          },
+          "sortBy": {
+            "type": "enum",
+            "values": [
+              "date",
+              "name"
+            ],
+            "required": false,
+            "default": "date"
           }
         },
         "slots": [
@@ -70,6 +80,71 @@
         "related": [
           "card",
           "tabs"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "form": [
+      {
+        "name": "form",
+        "title": "Form",
+        "description": "A multi-control form with text inputs, textareas, a select dropdown, a radio group, and checkboxes. Use when a spec calls for creating or editing a record with varied field types. Not for a short contact form (use form-block), search bars, or inline table filters.",
+        "category": "form",
+        "tags": [
+          "form",
+          "inputs",
+          "select",
+          "radio",
+          "checkbox"
+        ],
+        "status": "draft",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "textFields": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          },
+          "textareaFields": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "selectLabel": {
+            "type": "string",
+            "required": false
+          },
+          "selectOptions": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "radioLabel": {
+            "type": "string",
+            "required": false
+          },
+          "radioOptions": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "checkboxes": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "submitLabel": {
+            "type": "string",
+            "required": false,
+            "default": "Save"
+          }
+        },
+        "slots": [],
+        "related": [
+          "form-block"
         ],
         "since": "0.1.0"
       }
