@@ -9,7 +9,8 @@
     "brand": { "type": "string", "required": true },
     "labels": { "type": "array", "items": "string", "required": true },
     "hrefs": { "type": "array", "items": "string", "required": true },
-    "action": { "type": "string", "required": false }
+    "action": { "type": "string", "required": false },
+    "actionHref": { "type": "string", "required": false }
   },
   "slots": [],
   "related": ["site-footer"],

@@ -4,10 +4,11 @@ interface Props {
   labels: string[];
   hrefs: string[];
   action?: string;
+  actionHref?: string;
   note?: string;
 }
 
-const { brand, labels, hrefs, action, note } = Astro.props;
+const { brand, labels, hrefs, action, actionHref, note } = Astro.props;
 
 if (labels.length !== hrefs.length) {
   throw new Error(`site-header expected ${labels.length} hrefs and received ${hrefs.length}.`);
@@ -25,11 +26,16 @@ if (labels.length !== hrefs.length) {
       }
     </nav>
     {
-      action && (
-        <button type="button" class="action">
-          {action}
-        </button>
-      )
+      action &&
+        (actionHref ? (
+          <a href={actionHref} class="action">
+            {action}
+          </a>
+        ) : (
+          <button type="button" class="action">
+            {action}
+          </button>
+        ))
     }
   </div>
 </header>
@@ -76,6 +82,7 @@ if (labels.length !== hrefs.length) {
     background: var(--accent);
     color: var(--on-accent);
     font: inherit;
+    text-decoration: none;
     cursor: pointer;
   }
 

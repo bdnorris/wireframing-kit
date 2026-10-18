@@ -11,10 +11,11 @@ interface Props {
   title: string;
   nav?: { label: string; href: string }[];
   action?: string;
+  actionHref?: string;
   variant: 'default' | 'landing' | 'app';
 }
 
-const { project, title, nav, action, variant } = Astro.props;
+const { project, title, nav, action, actionHref, variant } = Astro.props;
 const config = readProject(project);
 const prefix = process.env.PROJECT ? '' : `/${config.name}`;
 const links = (nav ?? config.nav).map((link) => ({
@@ -22,6 +23,12 @@ const links = (nav ?? config.nav).map((link) => ({
   href: link.href === '/' ? `${prefix}/` : `${prefix}${link.href}`,
 }));
 const headerAction = action ?? config.action;
+const rawActionHref = actionHref ?? config.actionHref;
+const headerActionHref = rawActionHref
+  ? rawActionHref === '/'
+    ? `${prefix}/`
+    : `${prefix}${rawActionHref}`
+  : undefined;
 const stylesheet = path.join(process.cwd(), 'src', 'styles', 'tokens.css');
 if (!fs.existsSync(stylesheet)) {
   throw new Error('tokens.css is missing. Run npm run tokens.');
@@ -40,6 +47,7 @@ if (!fs.existsSync(stylesheet)) {
       labels={links.map((link) => link.label)}
       hrefs={links.map((link) => link.href)}
       action={headerAction}
+      actionHref={headerActionHref}
     />
     {
       variant === 'app' ? (
