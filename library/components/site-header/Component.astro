@@ -3,10 +3,11 @@ interface Props {
   brand: string;
   labels: string[];
   hrefs: string[];
+  action?: string;
   note?: string;
 }
 
-const { brand, labels, hrefs, note } = Astro.props;
+const { brand, labels, hrefs, action, note } = Astro.props;
 
 if (labels.length !== hrefs.length) {
   throw new Error(`site-header expected ${labels.length} hrefs and received ${hrefs.length}.`);
@@ -23,6 +24,13 @@ if (labels.length !== hrefs.length) {
         ))
       }
     </nav>
+    {
+      action && (
+        <button type="button" class="action">
+          {action}
+        </button>
+      )
+    }
   </div>
 </header>
 
@@ -51,11 +59,29 @@ if (labels.length !== hrefs.length) {
   nav {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-gutter);
   }
 
   a {
     color: var(--text);
     text-decoration: none;
+  }
+
+  .action {
+    margin: 0;
+    padding: var(--space-inset) var(--space-gutter);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: var(--accent);
+    color: var(--on-accent);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .action {
+      margin-left: auto;
+    }
   }
 </style>
