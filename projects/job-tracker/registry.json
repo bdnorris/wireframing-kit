@@ -1,0 +1,116 @@
+{
+  "groups": {
+    "card": [
+      {
+        "name": "card",
+        "title": "Card",
+        "description": "One titled item with a short description, an optional updated date, and an optional list of tags. Use inside card-list, feature-grid, or another slot. Not as a page section on its own and not for pricing tiers.",
+        "category": "card",
+        "tags": [
+          "card",
+          "status",
+          "tags"
+        ],
+        "status": "draft",
+        "overrides": "card",
+        "overrideReason": "Adds optional updated date and tag list fields for tracked items.",
+        "props": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "body": {
+            "type": "string",
+            "required": true
+          },
+          "updated": {
+            "type": "string",
+            "required": false
+          },
+          "tags": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          }
+        },
+        "slots": [],
+        "related": [
+          "card-list",
+          "feature-grid"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "section": [
+      {
+        "name": "card-list",
+        "title": "Card list",
+        "description": "A collection of cards with a toggle to switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.",
+        "category": "section",
+        "tags": [
+          "list",
+          "grid",
+          "cards"
+        ],
+        "status": "draft",
+        "props": {
+          "layout": {
+            "type": "enum",
+            "values": [
+              "list",
+              "grid"
+            ],
+            "required": false,
+            "default": "list"
+          }
+        },
+        "slots": [
+          "default"
+        ],
+        "related": [
+          "card",
+          "tabs"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "navigation": [
+      {
+        "name": "tabs",
+        "title": "Tabs",
+        "description": "A heading plus labeled panels switched by tab controls. Use when a page needs two or more peer lists or views in one place. Not for site navigation, filters, or a single static section.",
+        "category": "navigation",
+        "tags": [
+          "tabs",
+          "panels"
+        ],
+        "status": "draft",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": true
+          },
+          "labels": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          },
+          "selected": {
+            "type": "number",
+            "required": false,
+            "default": 0
+          }
+        },
+        "slots": [
+          "vetting",
+          "applied",
+          "rejected"
+        ],
+        "related": [
+          "card-list"
+        ],
+        "since": "0.1.0"
+      }
+    ]
+  }
+}

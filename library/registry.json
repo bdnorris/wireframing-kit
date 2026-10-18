@@ -303,11 +303,12 @@
       {
         "name": "site-header",
         "title": "Site header",
-        "description": "Project name and primary nav across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.",
+        "description": "Project name, primary nav, and an optional primary action across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.",
         "category": "header",
         "tags": [
           "header",
-          "nav"
+          "nav",
+          "cta"
         ],
         "status": "stable",
         "props": {
@@ -324,6 +325,10 @@
             "type": "array",
             "items": "string",
             "required": true
+          },
+          "action": {
+            "type": "string",
+            "required": false
           }
         },
         "slots": [],

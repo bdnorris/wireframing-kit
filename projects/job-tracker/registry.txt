@@ -1,0 +1,3 @@
+card	card	One titled item with a short description, an optional updated date, and an optional list of tags. Use inside card-list, feature-grid, or another slot. Not as a page section on its own and not for pricing tiers.
+card-list	section	A collection of cards with a toggle to switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.
+tabs	navigation	A heading plus labeled panels switched by tab controls. Use when a page needs two or more peer lists or views in one place. Not for site navigation, filters, or a single static section.

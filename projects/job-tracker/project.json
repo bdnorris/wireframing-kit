@@ -1,0 +1,13 @@
+{
+  "name": "job-tracker",
+  "title": "Job tracker",
+  "access": "none",
+  "pagesProject": "wf-job-tracker",
+  "domain": null,
+  "allowedEmails": [],
+  "nav": [{ "label": "Jobs", "href": "/" }],
+  "skin": null,
+  "includeGallery": false,
+  "annotations": true,
+  "fixtureCopy": "Roles still in vetting"
+}

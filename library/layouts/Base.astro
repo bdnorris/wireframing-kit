@@ -10,16 +10,18 @@ interface Props {
   project: string;
   title: string;
   nav?: { label: string; href: string }[];
+  action?: string;
   variant: 'default' | 'landing' | 'app';
 }
 
-const { project, title, nav, variant } = Astro.props;
+const { project, title, nav, action, variant } = Astro.props;
 const config = readProject(project);
 const prefix = process.env.PROJECT ? '' : `/${config.name}`;
 const links = (nav ?? config.nav).map((link) => ({
   label: link.label,
   href: link.href === '/' ? `${prefix}/` : `${prefix}${link.href}`,
 }));
+const headerAction = action ?? config.action;
 const stylesheet = path.join(process.cwd(), 'src', 'styles', 'tokens.css');
 if (!fs.existsSync(stylesheet)) {
   throw new Error('tokens.css is missing. Run npm run tokens.');
@@ -33,7 +35,12 @@ if (!fs.existsSync(stylesheet)) {
     <title>{title}</title>
   </head>
   <body data-project={config.name}>
-    <SiteHeader brand={config.title} labels={links.map((link) => link.label)} hrefs={links.map((link) => link.href)} />
+    <SiteHeader
+      brand={config.title}
+      labels={links.map((link) => link.label)}
+      hrefs={links.map((link) => link.href)}
+      action={headerAction}
+    />
     {
       variant === 'app' ? (
         <div class:list={['frame', variant]}>

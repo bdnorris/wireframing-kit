@@ -7,4 +7,4 @@ hero-centered	hero	Page-top hero with a single centered column and no media. Use
 hero-split	hero	Page-top hero with copy on one side and media on the other. Use for landing and product pages. Not for article headers.
 media-placeholder	placeholder	A crossed box labeled image, map, video, or chart. Use wherever the spec mentions media that is not designed yet. Not for icons, logos, or finished artwork.
 site-footer	footer	Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.
-site-header	header	Project name and primary nav across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.
+site-header	header	Project name, primary nav, and an optional primary action across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.

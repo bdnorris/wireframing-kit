@@ -1,0 +1,23 @@
+{
+  "page": "home",
+  "gaps": [
+    {
+      "section": "Tabs under the heading \"Roles still in vetting\". Labels: Vetting (selected), Applied, Rejected.",
+      "proposal": "new-component",
+      "approach": "A tabs navigation block with a heading, labeled tab controls, and named panel slots switched by a small vanilla JS island.",
+      "status": "approved"
+    },
+    {
+      "section": "Card list in each tab that can be arranged as a vertical list or a multi-column grid",
+      "proposal": "new-component",
+      "approach": "A card-list container with a layout prop (list or grid) that arranges slotted cards.",
+      "status": "approved"
+    },
+    {
+      "section": "Cards with a title, short description, and an updated date",
+      "proposal": "variant",
+      "approach": "Override card in job-tracker to add an updated date prop alongside title and body.",
+      "status": "approved"
+    }
+  ]
+}

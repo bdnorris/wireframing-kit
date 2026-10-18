@@ -1,0 +1,59 @@
+---
+import Layout from '@layouts/default';
+import Tabs from '@c/tabs';
+import CardList from '@c/card-list';
+import Card from '@c/card';
+---
+
+<Layout project="job-tracker" title="Job tracker" action="New job">
+  <Tabs heading="Roles still in vetting" labels={['Vetting', 'Applied', 'Rejected']}>
+    <CardList slot="vetting" layout="list">
+      <Card
+        title="Northline — Staff product designer"
+        body="Portfolio is in; waiting on a hiring-manager screen."
+        updated="Updated Oct 16"
+        tags={['Remote', 'Design systems', 'Series B']}
+      />
+      <Card
+        title="Harbor Freight Labs — Frontend engineer"
+        body="Recruiter replied; deciding whether to take the call."
+        updated="Updated Oct 14"
+        tags={['Hybrid', 'TypeScript', 'UI platform', 'Inbound']}
+      />
+      <Card
+        title="Meridian — Design systems lead"
+        body="Reviewing team charter and role scope before applying."
+        updated="Updated Oct 11"
+        tags={['Remote', 'Staff+', 'Tokens']}
+      />
+    </CardList>
+    <CardList slot="applied" layout="grid">
+      <Card
+        title="Fieldnote — Product designer"
+        body="Submitted Tuesday; no reply yet."
+        updated="Updated Oct 13"
+        tags={['Remote', 'B2B SaaS', 'Referral']}
+      />
+      <Card
+        title="Kite — Design engineer"
+        body="Application confirmed; take-home not sent."
+        updated="Updated Oct 9"
+        tags={['NYC', 'Astro', 'CSS']}
+      />
+    </CardList>
+    <CardList slot="rejected" layout="list">
+      <Card
+        title="Lumen & Co. — Senior designer"
+        body="Closed after the portfolio review."
+        updated="Updated Oct 4"
+        tags={['Remote', 'Consumer']}
+      />
+      <Card
+        title="Parcel — UX designer"
+        body="Declined after the first call."
+        updated="Updated Sep 29"
+        tags={['Hybrid', 'Logistics', 'Enterprise']}
+      />
+    </CardList>
+  </Tabs>
+</Layout>
