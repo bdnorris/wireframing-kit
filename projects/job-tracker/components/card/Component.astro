@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  updated?: string;
+  tags?: string[];
+  note?: string;
+}
+
+const { title, body, updated, tags = [], note } = Astro.props;
+---
+
+<article data-component="card" data-note={note}>
+  <div class="header">
+    <h3>{title}</h3>
+    {updated && <p class="updated">{updated}</p>}
+  </div>
+  <p class="body">{body}</p>
+  {
+    tags.length > 0 && (
+      <ul class="tags" aria-label="Tags">
+        {tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  article {
+    display: grid;
+    gap: var(--space-stack);
+    padding: var(--space-inset);
+    background: var(--surface-raised);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-stack);
+  }
+
+  h3 {
+    font-size: var(--heading-md);
+  }
+
+  .body {
+    color: var(--text-muted);
+  }
+
+  .updated {
+    color: var(--text-muted);
+    font-size: var(--caption);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-stack);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags li {
+    padding: 0 var(--space-inset);
+    background: var(--surface-highlight);
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-control);
+    color: var(--text);
+    font-size: var(--caption);
+  }
+</style>

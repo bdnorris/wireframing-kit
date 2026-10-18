@@ -1,0 +1,108 @@
+---
+interface Props {
+  layout?: 'list' | 'grid';
+  note?: string;
+}
+
+const { layout = 'list', note } = Astro.props;
+---
+
+<div data-component="card-list" data-note={note} data-card-list data-layout={layout}>
+  <div class="toolbar">
+    <div class="toggle" role="group" aria-label="View layout">
+      <button
+        type="button"
+        data-layout-option="list"
+        aria-pressed={layout === 'list' ? 'true' : 'false'}
+      >
+        List
+      </button>
+      <button
+        type="button"
+        data-layout-option="grid"
+        aria-pressed={layout === 'grid' ? 'true' : 'false'}
+      >
+        Grid
+      </button>
+    </div>
+  </div>
+  <div class:list={['items', layout]} data-card-list-items>
+    <slot />
+  </div>
+</div>
+
+<script>
+  function wireCardList(root) {
+    const items = root.querySelector('[data-card-list-items]');
+    const buttons = [...root.querySelectorAll('[data-layout-option]')];
+    if (!items) return;
+
+    function setLayout(next) {
+      root.dataset.layout = next;
+      items.classList.toggle('list', next === 'list');
+      items.classList.toggle('grid', next === 'grid');
+      buttons.forEach((button) => {
+        const active = button.dataset.layoutOption === next;
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    root.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-layout-option]');
+      if (!button || !root.contains(button)) return;
+      const next = button.dataset.layoutOption;
+      if (next === 'list' || next === 'grid') setLayout(next);
+    });
+  }
+
+  document.querySelectorAll('[data-card-list]').forEach(wireCardList);
+</script>
+
+<style>
+  [data-card-list] {
+    display: grid;
+    gap: var(--space-stack);
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .toggle {
+    display: inline-flex;
+    border: var(--border-width-hairline) solid var(--border);
+    border-radius: var(--radius-control);
+    background: var(--surface-raised);
+  }
+
+  button {
+    margin: 0;
+    padding: var(--space-stack) var(--space-inset);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--caption);
+    cursor: pointer;
+  }
+
+  button[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-stack);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .items.grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-gutter);
+    }
+  }
+</style>

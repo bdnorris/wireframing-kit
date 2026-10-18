@@ -1,0 +1,19 @@
+---
+import Component from './Component.astro';
+import Card from '../card/Component.astro';
+---
+
+<Component layout="list">
+  <Card
+    title="Northline — Staff product designer"
+    body="Portfolio is in; waiting on a hiring-manager screen."
+    updated="Updated Oct 16"
+    tags={['Remote', 'Design systems', 'Series B']}
+  />
+  <Card
+    title="Harbor Freight Labs — Frontend engineer"
+    body="Recruiter replied; deciding whether to take the call."
+    updated="Updated Oct 14"
+    tags={['Hybrid', 'TypeScript', 'UI platform']}
+  />
+</Component>
