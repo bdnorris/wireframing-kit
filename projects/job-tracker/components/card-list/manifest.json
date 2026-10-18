@@ -1,9 +1,9 @@
 {
   "name": "card-list",
   "title": "Card list",
-  "description": "A collection of cards with a toggle to switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.",
+  "description": "A collection of cards with controls to sort by name or date and switch between a vertical list and a multi-column grid. Use inside tabs or sections to display a group of peer cards. Not for marketing feature highlights with a section heading (use feature-grid) or comparison tables.",
   "category": "section",
-  "tags": ["list", "grid", "cards"],
+  "tags": ["list", "grid", "cards", "sort"],
   "status": "draft",
   "props": {
     "layout": {
@@ -11,6 +11,12 @@
       "values": ["list", "grid"],
       "required": false,
       "default": "list"
+    },
+    "sortBy": {
+      "type": "enum",
+      "values": ["date", "name"],
+      "required": false,
+      "default": "date"
     }
   },
   "slots": ["default"],

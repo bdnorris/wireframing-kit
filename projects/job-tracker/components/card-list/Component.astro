@@ -1,29 +1,52 @@
 ---
 interface Props {
   layout?: 'list' | 'grid';
+  sortBy?: 'date' | 'name';
   note?: string;
 }
 
-const { layout = 'list', note } = Astro.props;
+const { layout = 'list', sortBy = 'date', note } = Astro.props;
 ---
 
-<div data-component="card-list" data-note={note} data-card-list data-layout={layout}>
+<div data-component="card-list" data-note={note} data-card-list data-layout={layout} data-sort={sortBy}>
   <div class="toolbar">
-    <div class="toggle" role="group" aria-label="View layout">
-      <button
-        type="button"
-        data-layout-option="list"
-        aria-pressed={layout === 'list' ? 'true' : 'false'}
-      >
-        List
-      </button>
-      <button
-        type="button"
-        data-layout-option="grid"
-        aria-pressed={layout === 'grid' ? 'true' : 'false'}
-      >
-        Grid
-      </button>
+    <div class="control">
+      <span class="label">Sort</span>
+      <div class="toggle" role="group" aria-label="Sort cards">
+        <button
+          type="button"
+          data-sort-option="date"
+          aria-pressed={sortBy === 'date' ? 'true' : 'false'}
+        >
+          Date
+        </button>
+        <button
+          type="button"
+          data-sort-option="name"
+          aria-pressed={sortBy === 'name' ? 'true' : 'false'}
+        >
+          Name
+        </button>
+      </div>
+    </div>
+    <div class="control">
+      <span class="label">View</span>
+      <div class="toggle" role="group" aria-label="View layout">
+        <button
+          type="button"
+          data-layout-option="list"
+          aria-pressed={layout === 'list' ? 'true' : 'false'}
+        >
+          List
+        </button>
+        <button
+          type="button"
+          data-layout-option="grid"
+          aria-pressed={layout === 'grid' ? 'true' : 'false'}
+        >
+          Grid
+        </button>
+      </div>
     </div>
   </div>
   <div class:list={['items', layout]} data-card-list-items>
@@ -32,26 +55,61 @@ const { layout = 'list', note } = Astro.props;
 </div>
 
 <script>
+  function parseUpdated(card) {
+    const text = card.querySelector('.updated')?.textContent ?? '';
+    const cleaned = text.replace(/^updated\s+/i, '').trim();
+    const parsed = Date.parse(`${cleaned} 2026`);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+
+  function parseTitle(card) {
+    return (card.querySelector('h3')?.textContent ?? '').trim().toLowerCase();
+  }
+
   function wireCardList(root) {
     const items = root.querySelector('[data-card-list-items]');
-    const buttons = [...root.querySelectorAll('[data-layout-option]')];
+    const layoutButtons = [...root.querySelectorAll('[data-layout-option]')];
+    const sortButtons = [...root.querySelectorAll('[data-sort-option]')];
     if (!items) return;
 
     function setLayout(next) {
       root.dataset.layout = next;
       items.classList.toggle('list', next === 'list');
       items.classList.toggle('grid', next === 'grid');
-      buttons.forEach((button) => {
+      layoutButtons.forEach((button) => {
         const active = button.dataset.layoutOption === next;
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
     }
 
+    function setSort(next) {
+      root.dataset.sort = next;
+      const cards = [...items.children];
+      cards.sort((a, b) => {
+        if (next === 'name') {
+          return parseTitle(a).localeCompare(parseTitle(b));
+        }
+        return parseUpdated(b) - parseUpdated(a);
+      });
+      cards.forEach((card) => items.appendChild(card));
+      sortButtons.forEach((button) => {
+        const active = button.dataset.sortOption === next;
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
     root.addEventListener('click', (event) => {
-      const button = event.target.closest('[data-layout-option]');
-      if (!button || !root.contains(button)) return;
-      const next = button.dataset.layoutOption;
-      if (next === 'list' || next === 'grid') setLayout(next);
+      const layoutButton = event.target.closest('[data-layout-option]');
+      if (layoutButton && root.contains(layoutButton)) {
+        const next = layoutButton.dataset.layoutOption;
+        if (next === 'list' || next === 'grid') setLayout(next);
+        return;
+      }
+      const sortButton = event.target.closest('[data-sort-option]');
+      if (sortButton && root.contains(sortButton)) {
+        const next = sortButton.dataset.sortOption;
+        if (next === 'date' || next === 'name') setSort(next);
+      }
     });
   }
 
@@ -66,7 +124,21 @@ const { layout = 'list', note } = Astro.props;
 
   .toolbar {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-gutter);
+  }
+
+  .control {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-stack);
+  }
+
+  .label {
+    color: var(--text-muted);
+    font-size: var(--caption);
   }
 
   .toggle {
