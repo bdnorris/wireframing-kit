@@ -1,0 +1,136 @@
+---
+interface Props {
+  heading: string;
+  labels: string[];
+  selected?: number;
+  note?: string;
+}
+
+const { heading, labels, selected = 0, note } = Astro.props;
+
+if (labels.length === 0) {
+  throw new Error('tabs requires at least one label.');
+}
+
+const active = Math.min(Math.max(selected, 0), labels.length - 1);
+---
+
+<section data-component="tabs" data-note={note} data-tabs>
+  <h2>{heading}</h2>
+  <div class="tablist" role="tablist" aria-label={heading}>
+    {
+      labels.map((label, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`tab-${index}`}
+          aria-controls={`panel-${index}`}
+          aria-selected={index === active ? 'true' : 'false'}
+          tabindex={index === active ? 0 : -1}
+          data-tab-index={index}
+        >
+          {label}
+        </button>
+      ))
+    }
+  </div>
+  {
+    labels.map((label, index) => (
+      <div
+        class="panel"
+        role="tabpanel"
+        id={`panel-${index}`}
+        aria-labelledby={`tab-${index}`}
+        hidden={index !== active}
+        data-panel-index={index}
+      >
+        <slot name={label.toLowerCase().replace(/[^a-z0-9]+/g, '-')} />
+      </div>
+    ))
+  }
+</section>
+
+<script>
+  function wireTabs(root) {
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const panels = [...root.querySelectorAll('[role="tabpanel"]')];
+
+    function select(index) {
+      tabs.forEach((tab, tabIndex) => {
+        const on = tabIndex === index;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((panel, panelIndex) => {
+        panel.hidden = panelIndex !== index;
+      });
+      tabs[index]?.focus();
+    }
+
+    root.addEventListener('click', (event) => {
+      const tab = event.target.closest('[role="tab"]');
+      if (!tab || !root.contains(tab)) return;
+      const index = Number(tab.dataset.tabIndex);
+      if (Number.isNaN(index)) return;
+      select(index);
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.target.getAttribute('role') !== 'tab') return;
+      const current = Number(event.target.dataset.tabIndex);
+      if (Number.isNaN(current)) return;
+
+      let next = current;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+
+      event.preventDefault();
+      select(next);
+    });
+  }
+
+  document.querySelectorAll('[data-tabs]').forEach(wireTabs);
+</script>
+
+<style>
+  section {
+    display: grid;
+    gap: var(--space-stack);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  .tablist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-stack);
+    border-bottom: var(--border-width-hairline) solid var(--border);
+  }
+
+  button {
+    margin: 0;
+    padding: var(--space-inset) var(--space-gutter);
+    border: 0;
+    border-bottom: var(--border-width-focus) solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  button[aria-selected='true'] {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+
+  .panel {
+    min-height: var(--space-section);
+    padding-block: var(--space-stack);
+  }
+</style>

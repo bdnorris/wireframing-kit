@@ -1,0 +1,16 @@
+{
+  "name": "tabs",
+  "title": "Tabs",
+  "description": "A heading plus labeled panels switched by tab controls. Use when a page needs two or more peer lists or views in one place. Not for site navigation, filters, or a single static section.",
+  "category": "navigation",
+  "tags": ["tabs", "panels"],
+  "status": "draft",
+  "props": {
+    "heading": { "type": "string", "required": true },
+    "labels": { "type": "array", "items": "string", "required": true },
+    "selected": { "type": "number", "required": false, "default": 0 }
+  },
+  "slots": ["vetting", "applied", "rejected"],
+  "related": ["card-list"],
+  "since": "0.1.0"
+}
