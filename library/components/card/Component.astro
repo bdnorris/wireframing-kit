@@ -2,25 +2,49 @@
 interface Props {
   title: string;
   body: string;
+  href?: string;
   note?: string;
 }
 
-const { title, body, note } = Astro.props;
+const { title, body, href, note } = Astro.props;
+const hasMedia = Astro.slots.has('media');
+const Tag = href ? 'a' : 'article';
 ---
 
-<article data-component="card" data-note={note}>
-  <h3>{title}</h3>
-  <p>{body}</p>
-</article>
+<Tag data-component="card" data-note={note} href={href}>
+  {
+    hasMedia && (
+      <div class="media">
+        <slot name="media" />
+      </div>
+    )
+  }
+  <div class="copy">
+    <h3>{title}</h3>
+    <p>{body}</p>
+  </div>
+</Tag>
 
 <style>
-  article {
+  article,
+  a {
     display: grid;
-    gap: var(--space-stack);
-    padding: var(--space-inset);
+    align-content: start;
     background: var(--surface-raised);
     border: var(--border-width-hairline) solid var(--border);
     border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .copy {
+    display: grid;
+    gap: var(--space-stack);
+    padding: var(--space-inset);
   }
 
   h3 {
@@ -29,5 +53,9 @@ const { title, body, note } = Astro.props;
 
   p {
     color: var(--text-muted);
+  }
+
+  .media :global([data-component='media-placeholder']) {
+    border-radius: 0;
   }
 </style>
