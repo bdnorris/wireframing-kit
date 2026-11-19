@@ -1,0 +1,11 @@
+{
+  "page": "product",
+  "gaps": [
+    {
+      "section": "Large image on the left, product name and details on the right",
+      "proposal": "new-component",
+      "approach": "A product-detail with a large image beside the name and a short list of details.",
+      "status": "approved"
+    }
+  ]
+}

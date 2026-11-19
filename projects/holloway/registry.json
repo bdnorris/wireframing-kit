@@ -1,0 +1,134 @@
+{
+  "groups": {
+    "section": [
+      {
+        "name": "card-grid",
+        "title": "Card grid",
+        "description": "A row of peer cards with no section heading. Use when the cards are the section. Not for a headed feature list, a single card, or pricing tiers.",
+        "category": "section",
+        "tags": [
+          "cards",
+          "grid"
+        ],
+        "status": "draft",
+        "props": {},
+        "slots": [
+          "default"
+        ],
+        "related": [
+          "card",
+          "feature-grid"
+        ],
+        "since": "0.1.0"
+      },
+      {
+        "name": "product-list",
+        "title": "Product list",
+        "description": "A grid of product thumbnails, three or four across, with an optional heading. Use for a collection, catalog, or featured set. Not for three large collection cards.",
+        "category": "section",
+        "tags": [
+          "product",
+          "grid"
+        ],
+        "status": "draft",
+        "props": {
+          "heading": {
+            "type": "string",
+            "required": false
+          },
+          "columns": {
+            "type": "enum",
+            "values": [
+              "3",
+              "4"
+            ],
+            "default": "3"
+          }
+        },
+        "slots": [
+          "default"
+        ],
+        "related": [
+          "product-thumbnail"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "hero": [
+      {
+        "name": "product-detail",
+        "title": "Product detail",
+        "description": "A large image, a row of small squares for states or thumbnails, and the product name with a short list of details. Use at the top of a product page. Not for a thumbnail, a collection card, or a marketing hero.",
+        "category": "hero",
+        "tags": [
+          "product",
+          "detail"
+        ],
+        "status": "draft",
+        "props": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "details": {
+            "type": "array",
+            "items": "string",
+            "required": true
+          },
+          "frames": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "current": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [
+          "media"
+        ],
+        "related": [
+          "product-thumbnail",
+          "media-placeholder"
+        ],
+        "since": "0.1.0"
+      }
+    ],
+    "card": [
+      {
+        "name": "product-thumbnail",
+        "title": "Product thumbnail",
+        "description": "A product image with a name, a short detail, and an optional link. Use inside a product list. Not for a collection teaser or a feature card.",
+        "category": "card",
+        "tags": [
+          "product",
+          "thumbnail"
+        ],
+        "status": "draft",
+        "props": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "detail": {
+            "type": "string",
+            "required": false
+          },
+          "href": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "slots": [
+          "media"
+        ],
+        "related": [
+          "product-list",
+          "media-placeholder"
+        ],
+        "since": "0.1.0"
+      }
+    ]
+  }
+}

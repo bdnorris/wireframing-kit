@@ -1,0 +1,11 @@
+{
+  "page": "home",
+  "gaps": [
+    {
+      "section": "A grid of three cards, with no feature heading",
+      "proposal": "new-component",
+      "approach": "A card-grid that slots peer cards into one row.",
+      "status": "approved"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+---
+import MediaPlaceholder from '@c/media-placeholder';
+import Component from './Component.astro';
+---
+
+<Component
+  title="Oak study"
+  details={['Turned oak', 'Small scale', 'From Collection 1']}
+  frames={['Front', 'Side', 'Detail', 'Back']}
+  current="Front"
+>
+  <MediaPlaceholder slot="media" kind="image" label="Oak study" />
+</Component>

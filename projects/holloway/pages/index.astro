@@ -1,0 +1,76 @@
+---
+import Layout from '@layouts/default';
+import HeroSplit from '@c/hero-split';
+import MediaPlaceholder from '@c/media-placeholder';
+import CardGrid from '@c/card-grid';
+import Card from '@c/card';
+import ContentSection from '@c/content-section';
+import ProductList from '@c/product-list';
+import ProductThumbnail from '@c/product-thumbnail';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
+---
+
+<Layout project="holloway" title="Project Holloway">
+  <HeroSplit
+    heading="Project Holloway"
+    lede="A first look at the work, with room to add the rest."
+    mediaSide="right"
+    action="View the work"
+  >
+    <MediaPlaceholder slot="media" kind="image" label="Featured piece" />
+  </HeroSplit>
+  <CardGrid>
+    <Card title="Collection 1" body="Pieces collected in one place, ready to open." href={`${prefix}/collection`}>
+      <MediaPlaceholder slot="media" kind="image" label="Work still" />
+    </Card>
+    <Card title="Collection 2" body="A short account of what the project is for.">
+      <MediaPlaceholder slot="media" kind="image" label="Project portrait" />
+    </Card>
+    <Card title="Collection 3" body="Where to write when you want to talk about it.">
+      <MediaPlaceholder slot="media" kind="image" label="A written note" />
+    </Card>
+  </CardGrid>
+  <ContentSection
+    heading="Made to be looked at closely"
+    body="Each piece is finished by hand, then set beside the others so you can compare scale, material, and finish before you choose."
+    action="Browse the collection"
+    mediaSide="left"
+  >
+    <MediaPlaceholder slot="media" kind="image" label="Studio table" />
+  </ContentSection>
+  <ProductList heading="Featured" columns="4">
+    <ProductThumbnail title="Pale cup" detail="Porcelain, thin" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Pale cup" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Bound book" detail="Cloth and thread" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Bound book" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Oak study" detail="Turned oak, small" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Oak study" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Line vessel" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Soft drawing" detail="Charcoal on cotton" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Soft drawing" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Cast bowl" detail="Bronze, sand cast" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Cast bowl" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Open frame" detail="Ash, open joinery" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Open frame" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Folded form" detail="Paper and wire" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Folded form" slot="media" />
+    </ProductThumbnail>
+  </ProductList>
+  <ContentSection
+    heading="Ask about a piece"
+    body="If something in the set catches your eye, write and we will send sizes, materials, and what is still available."
+    action="Get in touch"
+    mediaSide="right"
+  >
+    <MediaPlaceholder slot="media" kind="image" label="Written note" />
+  </ContentSection>
+</Layout>

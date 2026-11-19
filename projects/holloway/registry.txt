@@ -1,0 +1,4 @@
+card-grid	section	A row of peer cards with no section heading. Use when the cards are the section. Not for a headed feature list, a single card, or pricing tiers.
+product-detail	hero	A large image, a row of small squares for states or thumbnails, and the product name with a short list of details. Use at the top of a product page. Not for a thumbnail, a collection card, or a marketing hero.
+product-list	section	A grid of product thumbnails, three or four across, with an optional heading. Use for a collection, catalog, or featured set. Not for three large collection cards.
+product-thumbnail	card	A product image with a name, a short detail, and an optional link. Use inside a product list. Not for a collection teaser or a feature card.

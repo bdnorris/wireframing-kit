@@ -1,0 +1,17 @@
+{
+  "name": "product-detail",
+  "title": "Product detail",
+  "description": "A large image, a row of small squares for states or thumbnails, and the product name with a short list of details. Use at the top of a product page. Not for a thumbnail, a collection card, or a marketing hero.",
+  "category": "hero",
+  "tags": ["product", "detail"],
+  "status": "draft",
+  "props": {
+    "title": { "type": "string", "required": true },
+    "details": { "type": "array", "items": "string", "required": true },
+    "frames": { "type": "array", "items": "string", "required": false },
+    "current": { "type": "string", "required": false }
+  },
+  "slots": ["media"],
+  "related": ["product-thumbnail", "media-placeholder"],
+  "since": "0.1.0"
+}

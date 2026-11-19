@@ -1,0 +1,115 @@
+---
+interface Props {
+  title: string;
+  details: string[];
+  frames?: string[];
+  current?: string;
+  note?: string;
+}
+
+const { title, details, frames = [], current, note } = Astro.props;
+const active = current ?? frames[0];
+---
+
+<section data-component="product-detail" data-note={note}>
+  <div class="media">
+    <div class="image">
+      <slot name="media" />
+    </div>
+    {
+      frames.length > 0 && (
+        <ul class="frames" aria-label="Views">
+          {frames.map((frame) => (
+            <li class:list={['frame', { current: frame === active }]} aria-current={frame === active ? 'true' : undefined}>
+              {frame}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <div class="copy">
+    <h1>{title}</h1>
+    <ul>
+      {details.map((detail) => <li>{detail}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  section {
+    display: grid;
+    gap: var(--space-gutter);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  .copy {
+    display: grid;
+    align-content: center;
+    gap: var(--space-gutter);
+  }
+
+  h1 {
+    font-size: var(--heading-xl);
+    max-width: 16ch;
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-stack);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    color: var(--text-muted);
+    max-width: 36ch;
+  }
+
+  .media {
+    display: grid;
+    align-content: start;
+    gap: var(--space-stack);
+  }
+
+  .frames {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-stack);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .frame {
+    display: grid;
+    place-items: center;
+    width: var(--space-section);
+    height: var(--space-section);
+    border: var(--border-width-hairline) solid var(--border);
+    background: var(--placeholder);
+    color: var(--text-muted);
+    font-size: var(--caption);
+    text-align: center;
+  }
+
+  .frame.current {
+    border-color: var(--accent);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .image :global([data-component='media-placeholder']) {
+    height: 100%;
+    min-height: var(--breakpoint-sm);
+    border-radius: 0;
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    section {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import Layout from '@layouts/default';
+import ContentSection from '@c/content-section';
+import ProductList from '@c/product-list';
+import ProductThumbnail from '@c/product-thumbnail';
+import MediaPlaceholder from '@c/media-placeholder';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
+---
+
+<Layout project="holloway" title="Collection 1">
+  <ContentSection
+    heading="Collection 1"
+    body="A first set of pieces from the collection, gathered so they can be looked through together."
+  />
+  <ProductList>
+    <ProductThumbnail title="Oak study" detail="Turned oak, small" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Oak study" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Line vessel" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Folded form" detail="Paper and wire" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Folded form" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Open frame" detail="Ash, open joinery" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Open frame" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Cast bowl" detail="Bronze, sand cast" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Cast bowl" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Soft drawing" detail="Charcoal on cotton" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Soft drawing" />
+    </ProductThumbnail>
+  </ProductList>
+</Layout>

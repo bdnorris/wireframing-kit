@@ -1,0 +1,16 @@
+{
+  "name": "product-thumbnail",
+  "title": "Product thumbnail",
+  "description": "A product image with a name, a short detail, and an optional link. Use inside a product list. Not for a collection teaser or a feature card.",
+  "category": "card",
+  "tags": ["product", "thumbnail"],
+  "status": "draft",
+  "props": {
+    "title": { "type": "string", "required": true },
+    "detail": { "type": "string", "required": false },
+    "href": { "type": "string", "required": false }
+  },
+  "slots": ["media"],
+  "related": ["product-list", "media-placeholder"],
+  "since": "0.1.0"
+}

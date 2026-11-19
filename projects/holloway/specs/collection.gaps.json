@@ -1,0 +1,17 @@
+{
+  "page": "collection",
+  "gaps": [
+    {
+      "section": "Product thumbnail card with an image, name, and short detail",
+      "proposal": "new-component",
+      "approach": "A product-thumbnail with an image, a name, and a short detail.",
+      "status": "approved"
+    },
+    {
+      "section": "Product list grid of those thumbnails",
+      "proposal": "new-component",
+      "approach": "A product-list grid that slots product-thumbnail cards.",
+      "status": "approved"
+    }
+  ]
+}

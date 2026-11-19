@@ -1,0 +1,31 @@
+---
+interface Props {
+  note?: string;
+}
+
+const { note } = Astro.props;
+---
+
+<section data-component="card-grid" data-note={note}>
+  <div class="grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  section {
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

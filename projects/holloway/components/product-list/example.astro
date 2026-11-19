@@ -1,0 +1,17 @@
+---
+import MediaPlaceholder from '@c/media-placeholder';
+import ProductThumbnail from '@c/product-thumbnail';
+import Component from './Component.astro';
+---
+
+<Component>
+  <ProductThumbnail title="Oak study" detail="Turned oak, small">
+    <MediaPlaceholder slot="media" kind="image" label="Oak study" />
+  </ProductThumbnail>
+  <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze">
+    <MediaPlaceholder slot="media" kind="image" label="Line vessel" />
+  </ProductThumbnail>
+  <ProductThumbnail title="Folded form" detail="Paper and wire">
+    <MediaPlaceholder slot="media" kind="image" label="Folded form" />
+  </ProductThumbnail>
+</Component>
