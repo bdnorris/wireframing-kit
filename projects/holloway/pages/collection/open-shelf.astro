@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/default';
+import ContentSection from '@c/content-section';
+import CardGrid from '@c/card-grid';
+import Card from '@c/card';
+import MediaPlaceholder from '@c/media-placeholder';
+---
+
+<Layout project="holloway" title="Open shelf">
+  <ContentSection
+    heading="Open shelf"
+    body="Stronger blocks and weaves meant to read clearly from across a room."
+  />
+  <CardGrid columns="4">
+    <Card title="Shelf bar" body="A heavy horizontal that holds a row of marks.">
+      <MediaPlaceholder slot="media" kind="image" label="Shelf bar" />
+    </Card>
+    <Card title="Stack brick" body="Offset rectangles stacked like masonry.">
+      <MediaPlaceholder slot="media" kind="image" label="Stack brick" />
+    </Card>
+    <Card title="Bolt cross" body="Bold crosses set on a wide pitch.">
+      <MediaPlaceholder slot="media" kind="image" label="Bolt cross" />
+    </Card>
+    <Card title="Frame rail" body="A double border that frames a clear center.">
+      <MediaPlaceholder slot="media" kind="image" label="Frame rail" />
+    </Card>
+  </CardGrid>
+</Layout>

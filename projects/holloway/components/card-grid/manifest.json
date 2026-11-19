@@ -1,11 +1,13 @@
 {
   "name": "card-grid",
   "title": "Card grid",
-  "description": "A row of peer cards with no section heading. Use when the cards are the section. Not for a headed feature list, a single card, or pricing tiers.",
+  "description": "A row of peer cards with no section heading, two, three, or four across. Use when the cards are the section. Not for a headed feature list, a single card, or pricing tiers.",
   "category": "section",
   "tags": ["cards", "grid"],
   "status": "draft",
-  "props": {},
+  "props": {
+    "columns": { "type": "enum", "values": ["2", "3", "4"], "default": "3" }
+  },
   "slots": ["default"],
   "related": ["card", "feature-grid"],
   "since": "0.1.0"

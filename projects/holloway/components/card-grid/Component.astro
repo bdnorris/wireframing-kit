@@ -1,13 +1,14 @@
 ---
 interface Props {
+  columns?: '2' | '3' | '4';
   note?: string;
 }
 
-const { note } = Astro.props;
+const { columns = '3', note } = Astro.props;
 ---
 
 <section data-component="card-grid" data-note={note}>
-  <div class="grid">
+  <div class:list={['grid', `columns-${columns}`]}>
     <slot />
   </div>
 </section>
@@ -24,8 +25,16 @@ const { note } = Astro.props;
   }
 
   @media (width >= var(--breakpoint-md)) {
-    .grid {
+    .columns-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .columns-3 {
       grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .columns-4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 </style>

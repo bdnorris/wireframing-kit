@@ -1,6 +1,8 @@
 ---
 import Layout from '@layouts/default';
 import ContentSection from '@c/content-section';
+import CardGrid from '@c/card-grid';
+import Card from '@c/card';
 import ProductList from '@c/product-list';
 import ProductThumbnail from '@c/product-thumbnail';
 import MediaPlaceholder from '@c/media-placeholder';
@@ -8,31 +10,41 @@ import MediaPlaceholder from '@c/media-placeholder';
 const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
-<Layout project="holloway" title="Collection 1">
+<Layout project="holloway" title="Collections">
   <ContentSection
-    heading="Collection 1"
-    body="A first set of pieces from the collection, gathered so they can be looked through together."
+    heading="Collections"
+    body="Each collection gathers a small set of patterns so they can be compared side by side."
   />
-  <ProductList>
-    <ProductThumbnail title="Oak study" detail="Turned oak, small" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Oak study" />
-    </ProductThumbnail>
-    <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Line vessel" />
-    </ProductThumbnail>
-    <ProductThumbnail title="Folded form" detail="Paper and wire" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Folded form" />
-    </ProductThumbnail>
-    <ProductThumbnail title="Open frame" detail="Ash, open joinery" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Open frame" />
-    </ProductThumbnail>
-    <ProductThumbnail title="Cast bowl" detail="Bronze, sand cast" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Cast bowl" />
-    </ProductThumbnail>
-    <ProductThumbnail title="Soft drawing" detail="Charcoal on cotton" href={`${prefix}/product`}>
-      <MediaPlaceholder slot="media" kind="image" label="Soft drawing" />
-    </ProductThumbnail>
-  </ProductList>
+  <CardGrid columns="2">
+    <Card
+      title="Field notes"
+      body="Quiet marks and lines drawn from notebooks and site sketches."
+      href={`${prefix}/collection/field-notes`}
+    >
+      <MediaPlaceholder slot="media" kind="image" label="Field notes" />
+    </Card>
+    <Card
+      title="Studio table"
+      body="Patterns that sit well on a flat surface under good light."
+      href={`${prefix}/collection/studio-table`}
+    >
+      <MediaPlaceholder slot="media" kind="image" label="Studio table" />
+    </Card>
+    <Card
+      title="Soft edge"
+      body="Rounded repeats and open spacing for a lighter hand."
+      href={`${prefix}/collection/soft-edge`}
+    >
+      <MediaPlaceholder slot="media" kind="image" label="Soft edge" />
+    </Card>
+    <Card
+      title="Open shelf"
+      body="Stronger blocks and weaves meant to read from across a room."
+      href={`${prefix}/collection/open-shelf`}
+    >
+      <MediaPlaceholder slot="media" kind="image" label="Open shelf" />
+    </Card>
+  </CardGrid>
   <ProductList heading="Featured Products" columns="4">
     <ProductThumbnail title="Pale cup" detail="Porcelain, thin" href={`${prefix}/product`}>
       <MediaPlaceholder slot="media" kind="image" label="Pale cup" />
@@ -47,5 +59,4 @@ const prefix = process.env.PROJECT ? '' : '/holloway';
       <MediaPlaceholder slot="media" kind="image" label="Line vessel" />
     </ProductThumbnail>
   </ProductList>
-
 </Layout>

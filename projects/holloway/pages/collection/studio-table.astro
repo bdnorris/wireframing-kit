@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/default';
+import ContentSection from '@c/content-section';
+import CardGrid from '@c/card-grid';
+import Card from '@c/card';
+import MediaPlaceholder from '@c/media-placeholder';
+---
+
+<Layout project="holloway" title="Studio table">
+  <ContentSection
+    heading="Studio table"
+    body="Patterns that sit well on a flat surface under good light, meant for close comparison."
+  />
+  <CardGrid columns="4">
+    <Card title="Broken chevron" body="Short angled runs that turn before they meet.">
+      <MediaPlaceholder slot="media" kind="image" label="Broken chevron" />
+    </Card>
+    <Card title="Block weave" body="Interlocked rectangles that read as cloth.">
+      <MediaPlaceholder slot="media" kind="image" label="Block weave" />
+    </Card>
+    <Card title="Corner tick" body="Small marks that hold the corners of a field.">
+      <MediaPlaceholder slot="media" kind="image" label="Corner tick" />
+    </Card>
+    <Card title="Table band" body="A wide horizontal band for the middle of a plane.">
+      <MediaPlaceholder slot="media" kind="image" label="Table band" />
+    </Card>
+  </CardGrid>
+</Layout>
