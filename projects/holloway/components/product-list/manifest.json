@@ -1,0 +1,15 @@
+{
+  "name": "product-list",
+  "title": "Product list",
+  "description": "A grid of product thumbnails, three or four across, with an optional heading. Use for a collection, catalog, or featured set. Not for three large collection cards.",
+  "category": "section",
+  "tags": ["product", "grid"],
+  "status": "draft",
+  "props": {
+    "heading": { "type": "string", "required": false },
+    "columns": { "type": "enum", "values": ["3", "4"], "default": "3" }
+  },
+  "slots": ["default"],
+  "related": ["product-thumbnail"],
+  "since": "0.1.0"
+}

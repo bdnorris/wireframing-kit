@@ -1,0 +1,44 @@
+---
+interface Props {
+  heading?: string;
+  columns?: '3' | '4';
+  note?: string;
+}
+
+const { heading, columns = '3', note } = Astro.props;
+---
+
+<section data-component="product-list" data-note={note}>
+  {heading && <h2>{heading}</h2>}
+  <div class:list={['grid', `columns-${columns}`]}>
+    <slot />
+  </div>
+</section>
+
+<style>
+  section {
+    display: grid;
+    gap: var(--space-gutter);
+    padding: var(--space-section) var(--space-gutter);
+  }
+
+  h2 {
+    font-size: var(--heading-lg);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+  }
+
+  @media (width >= var(--breakpoint-md)) {
+    .columns-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .columns-4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+</style>
