@@ -65,7 +65,12 @@ if (!fs.existsSync(stylesheet)) {
         </main>
       )
     }
-    <SiteFooter brand={config.title} text="Wireframe prototype" />
+    <SiteFooter
+      brand={config.title}
+      text="Wireframe prototype"
+      labels={links.map((link) => link.label)}
+      hrefs={links.map((link) => link.href)}
+    />
     {
       config.annotations && (
         <script>

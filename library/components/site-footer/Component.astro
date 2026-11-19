@@ -2,15 +2,32 @@
 interface Props {
   brand: string;
   text?: string;
+  labels?: string[];
+  hrefs?: string[];
   note?: string;
 }
 
-const { brand, text, note } = Astro.props;
+const { brand, text, labels = [], hrefs = [], note } = Astro.props;
+
+if (labels.length !== hrefs.length) {
+  throw new Error(`site-footer expected ${labels.length} hrefs and received ${hrefs.length}.`);
+}
+
+const hasNav = labels.length > 0;
 ---
 
 <footer data-component="site-footer" data-note={note}>
   <div class="bar">
     <p>{brand}</p>
+    {
+      hasNav && (
+        <nav>
+          {labels.map((label, index) => (
+            <a href={hrefs[index]}>{label}</a>
+          ))}
+        </nav>
+      )
+    }
     {text && <p class="muted">{text}</p>}
   </div>
 </footer>
@@ -24,11 +41,24 @@ const { brand, text, note } = Astro.props;
   .bar {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     gap: var(--space-gutter);
     width: min(100%, var(--breakpoint-lg));
     margin-inline: auto;
     padding: var(--space-section) var(--space-gutter);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-gutter);
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
   }
 
   .muted {
