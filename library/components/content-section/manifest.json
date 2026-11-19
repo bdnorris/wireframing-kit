@@ -1,15 +1,17 @@
 {
   "name": "content-section",
   "title": "Content section",
-  "description": "A heading, one paragraph, and an optional media slot. Use for a single explanatory block. Not for heroes, card grids, or long articles.",
+  "description": "A heading, one paragraph, an optional action, and an optional image. On small screens the image comes first; on desktop it can sit left or right. Use for a single explanatory block. Not for heroes, card grids, or long articles.",
   "category": "section",
   "tags": ["content"],
   "status": "stable",
   "props": {
     "heading": { "type": "string", "required": true },
-    "body": { "type": "string", "required": true }
+    "body": { "type": "string", "required": true },
+    "action": { "type": "string", "required": false },
+    "mediaSide": { "type": "enum", "values": ["left", "right"], "default": "right" }
   },
   "slots": ["media"],
-  "related": ["feature-grid", "media-placeholder"],
+  "related": ["feature-grid", "media-placeholder", "cta-band"],
   "since": "0.1.0"
 }

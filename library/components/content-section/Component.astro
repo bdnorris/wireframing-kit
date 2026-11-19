@@ -2,18 +2,20 @@
 interface Props {
   heading: string;
   body: string;
+  action?: string;
+  mediaSide?: 'left' | 'right';
   note?: string;
 }
 
-const { heading, body, note } = Astro.props;
+const { heading, body, action, mediaSide = 'right', note } = Astro.props;
 const hasMedia = Astro.slots.has('media');
 ---
 
-<section data-component="content-section" data-note={note} class:list={[{ 'with-media': hasMedia }]}>
-  <div class="copy">
-    <h2>{heading}</h2>
-    <p>{body}</p>
-  </div>
+<section
+  data-component="content-section"
+  data-note={note}
+  class:list={[{ 'with-media': hasMedia }, mediaSide]}
+>
   {
     hasMedia && (
       <div class="media">
@@ -21,6 +23,11 @@ const hasMedia = Astro.slots.has('media');
       </div>
     )
   }
+  <div class="copy">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+    {action && <p class="action">{action}</p>}
+  </div>
 </section>
 
 <style>
@@ -34,6 +41,7 @@ const hasMedia = Astro.slots.has('media');
     display: grid;
     gap: var(--space-stack);
     align-content: center;
+    justify-items: start;
   }
 
   h2 {
@@ -46,10 +54,26 @@ const hasMedia = Astro.slots.has('media');
     color: var(--text-muted);
   }
 
+  .action {
+    margin: 0;
+    padding: var(--space-inset) var(--space-gutter);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: var(--radius-control);
+  }
+
+  .media :global([data-component='media-placeholder']) {
+    min-height: calc(var(--space-section) * 4);
+  }
+
   @media (width >= var(--breakpoint-md)) {
     .with-media {
       grid-template-columns: 1fr 1fr;
       align-items: center;
+    }
+
+    .right .copy {
+      order: -1;
     }
   }
 </style>

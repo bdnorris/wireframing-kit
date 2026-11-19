@@ -1,15 +1,16 @@
 {
   "name": "card",
   "title": "Card",
-  "description": "One titled point with a short body. Use inside feature-grid or another slot. Not as a page section on its own and not for pricing tiers.",
+  "description": "One titled point with a short body, an optional image, and an optional link. Use inside a card grid, feature-grid, or another slot. Not as a page section on its own and not for pricing tiers.",
   "category": "card",
   "tags": ["card"],
   "status": "stable",
   "props": {
     "title": { "type": "string", "required": true },
-    "body": { "type": "string", "required": true }
+    "body": { "type": "string", "required": true },
+    "href": { "type": "string", "required": false }
   },
-  "slots": [],
-  "related": ["feature-grid"],
+  "slots": ["media"],
+  "related": ["feature-grid", "media-placeholder"],
   "since": "0.1.0"
 }
