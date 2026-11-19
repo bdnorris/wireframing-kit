@@ -1,5 +1,5 @@
-card	card	One titled point with a short body. Use inside feature-grid or another slot. Not as a page section on its own and not for pricing tiers.
-content-section	section	A heading, one paragraph, and an optional media slot. Use for a single explanatory block. Not for heroes, card grids, or long articles.
+card	card	One titled point with a short body, an optional image, and an optional link. Use inside a card grid, feature-grid, or another slot. Not as a page section on its own and not for pricing tiers.
+content-section	section	A heading, one paragraph, an optional action, and an optional image. On small screens the image comes first; on desktop it can sit left or right. Use for a single explanatory block. Not for heroes, card grids, or long articles.
 cta-band	section	A closing prompt with one action. Use near the end of a page. Not for the page hero and not for a form.
 feature-grid	section	A heading plus a row of cards. Use for three or more peer features. Not for a single story, a pricing table, or a comparison.
 form-block	form	A short labeled form that does not submit. Use when the spec asks for a contact or request form. Not for filters, login, or multi-step flows.
