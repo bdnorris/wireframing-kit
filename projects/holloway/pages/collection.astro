@@ -33,4 +33,19 @@ const prefix = process.env.PROJECT ? '' : '/holloway';
       <MediaPlaceholder slot="media" kind="image" label="Soft drawing" />
     </ProductThumbnail>
   </ProductList>
+  <ProductList heading="Featured Products" columns="4">
+    <ProductThumbnail title="Pale cup" detail="Porcelain, thin" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Pale cup" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Bound book" detail="Cloth and thread" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Bound book" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Oak study" detail="Turned oak, small" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Oak study" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze" href={`${prefix}/product`}>
+      <MediaPlaceholder slot="media" kind="image" label="Line vessel" />
+    </ProductThumbnail>
+  </ProductList>
+
 </Layout>

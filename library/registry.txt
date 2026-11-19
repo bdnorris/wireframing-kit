@@ -6,5 +6,5 @@ form-block	form	A short labeled form that does not submit. Use when the spec ask
 hero-centered	hero	Page-top hero with a single centered column and no media. Use when the spec calls for a headline without an image. Not for article titles or a split layout.
 hero-split	hero	Page-top hero with copy on one side and media on the other. Use for landing and product pages. Not for article headers.
 media-placeholder	placeholder	A crossed box labeled image, map, video, or chart. Use wherever the spec mentions media that is not designed yet. Not for icons, logos, or finished artwork.
-site-footer	footer	Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.
+site-footer	footer	Closing band with the project name, optional primary nav, and optional supporting text. Use at the bottom of a page shell. Not for legal copy or a full sitemap.
 site-header	header	Project name, primary nav, and an optional primary action across the top of every page. Use for site-level navigation. Not for in-page section links or a sidebar menu.

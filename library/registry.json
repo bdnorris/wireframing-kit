@@ -296,10 +296,11 @@
       {
         "name": "site-footer",
         "title": "Site footer",
-        "description": "Closing band with the project name. Use at the bottom of a page shell. Not for legal copy, a sitemap, or a second navigation.",
+        "description": "Closing band with the project name, optional primary nav, and optional supporting text. Use at the bottom of a page shell. Not for legal copy or a full sitemap.",
         "category": "footer",
         "tags": [
-          "footer"
+          "footer",
+          "nav"
         ],
         "status": "stable",
         "props": {
@@ -309,6 +310,16 @@
           },
           "text": {
             "type": "string",
+            "required": false
+          },
+          "labels": {
+            "type": "array",
+            "items": "string",
+            "required": false
+          },
+          "hrefs": {
+            "type": "array",
+            "items": "string",
             "required": false
           }
         },
