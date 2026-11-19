@@ -4,6 +4,8 @@ import ContentSection from '@c/content-section';
 import CardGrid from '@c/card-grid';
 import Card from '@c/card';
 import MediaPlaceholder from '@c/media-placeholder';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
 <Layout project="holloway" title="Field notes">
@@ -12,16 +14,16 @@ import MediaPlaceholder from '@c/media-placeholder';
     body="Quiet marks and lines drawn from notebooks and site sketches, kept together for a closer look."
   />
   <CardGrid columns="4">
-    <Card title="Stripe field" body="Parallel lines at even spacing across a panel.">
+    <Card title="Stripe field" body="Parallel lines at even spacing across a panel." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Stripe field" />
     </Card>
-    <Card title="Dot lattice" body="A light grid of dots without a hard edge.">
+    <Card title="Dot lattice" body="A light grid of dots without a hard edge." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Dot lattice" />
     </Card>
-    <Card title="Pencil hatch" body="Short crossed strokes that read as tone.">
+    <Card title="Pencil hatch" body="Short crossed strokes that read as tone." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Pencil hatch" />
     </Card>
-    <Card title="Margin rule" body="A single thin line set in from the edge.">
+    <Card title="Margin rule" body="A single thin line set in from the edge." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Margin rule" />
     </Card>
   </CardGrid>

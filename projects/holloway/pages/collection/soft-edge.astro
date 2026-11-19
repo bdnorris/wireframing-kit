@@ -4,6 +4,8 @@ import ContentSection from '@c/content-section';
 import CardGrid from '@c/card-grid';
 import Card from '@c/card';
 import MediaPlaceholder from '@c/media-placeholder';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
 <Layout project="holloway" title="Soft edge">
@@ -12,16 +14,16 @@ import MediaPlaceholder from '@c/media-placeholder';
     body="Rounded repeats and open spacing for a lighter hand across fabric and paper."
   />
   <CardGrid columns="4">
-    <Card title="Offset vine" body="A climbing line with leaves set off the stem.">
+    <Card title="Offset vine" body="A climbing line with leaves set off the stem." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Offset vine" />
     </Card>
-    <Card title="Open petal" body="Radial petals with space left between each lobe.">
+    <Card title="Open petal" body="Radial petals with space left between each lobe." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Open petal" />
     </Card>
-    <Card title="Drift loop" body="Loose loops that never quite close.">
+    <Card title="Drift loop" body="Loose loops that never quite close." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Drift loop" />
     </Card>
-    <Card title="Soft grid" body="A faint square lattice with rounded crossings.">
+    <Card title="Soft grid" body="A faint square lattice with rounded crossings." href={`${prefix}/pattern`}>
       <MediaPlaceholder slot="media" kind="image" label="Soft grid" />
     </Card>
   </CardGrid>

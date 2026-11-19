@@ -1,0 +1,16 @@
+---
+import Layout from '@layouts/default';
+import ProductDetail from '@c/product-detail';
+import MediaPlaceholder from '@c/media-placeholder';
+---
+
+<Layout project="holloway" title="Pattern">
+  <ProductDetail
+    title="Stripe field"
+    details={['Even spacing', 'Scales across a panel', 'From Field notes']}
+    frames={['Repeat', 'Close', 'Edge', 'On cloth']}
+    current="Repeat"
+  >
+    <MediaPlaceholder slot="media" kind="image" label="Stripe field" />
+  </ProductDetail>
+</Layout>

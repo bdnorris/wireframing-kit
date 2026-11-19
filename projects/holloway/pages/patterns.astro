@@ -3,26 +3,52 @@ import Layout from '@layouts/default';
 import CardGrid from '@c/card-grid';
 import Card from '@c/card';
 import MediaPlaceholder from '@c/media-placeholder';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
 <Layout project="holloway" title="Patterns">
   <CardGrid>
-    <Card title="Stripe field" body="Parallel lines at even spacing, ready to scale across a panel.">
+    <Card
+      title="Stripe field"
+      body="Parallel lines at even spacing, ready to scale across a panel."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Stripe field" />
     </Card>
-    <Card title="Dot lattice" body="A quiet grid of dots for light texture without a hard edge.">
+    <Card
+      title="Dot lattice"
+      body="A quiet grid of dots for light texture without a hard edge."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Dot lattice" />
     </Card>
-    <Card title="Broken chevron" body="Short angled runs that turn before they meet.">
+    <Card
+      title="Broken chevron"
+      body="Short angled runs that turn before they meet."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Broken chevron" />
     </Card>
-    <Card title="Offset vine" body="A climbing line with leaves set off the stem.">
+    <Card
+      title="Offset vine"
+      body="A climbing line with leaves set off the stem."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Offset vine" />
     </Card>
-    <Card title="Block weave" body="Interlocked rectangles that read as cloth from a distance.">
+    <Card
+      title="Block weave"
+      body="Interlocked rectangles that read as cloth from a distance."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Block weave" />
     </Card>
-    <Card title="Open petal" body="Radial petals with space left between each lobe.">
+    <Card
+      title="Open petal"
+      body="Radial petals with space left between each lobe."
+      href={`${prefix}/pattern`}
+    >
       <MediaPlaceholder slot="media" kind="image" label="Open petal" />
     </Card>
   </CardGrid>
