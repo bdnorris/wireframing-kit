@@ -3,11 +3,17 @@ import Layout from '@layouts/default';
 import CardGrid from '@c/card-grid';
 import Card from '@c/card';
 import MediaPlaceholder from '@c/media-placeholder';
+import ContentSection from '@c/content-section';
 
 const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
-<Layout project="holloway" title="Patterns">
+<Layout project="holloway" title="Pattern Collection">
+  <ContentSection
+    heading="Pattern Collection"
+    body="A selection of patterns from the collection."
+    action="Customize Pattern"
+  />
   <CardGrid>
     <Card
       title="Stripe field"

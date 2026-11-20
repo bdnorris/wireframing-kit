@@ -4,10 +4,11 @@ interface Props {
   details: string[];
   frames?: string[];
   current?: string;
+  action?: string;
   note?: string;
 }
 
-const { title, details, frames = [], current, note } = Astro.props;
+const { title, details, frames = [], current, action, note } = Astro.props;
 const active = current ?? frames[0];
 ---
 
@@ -33,6 +34,7 @@ const active = current ?? frames[0];
     <ul>
       {details.map((detail) => <li>{detail}</li>)}
     </ul>
+    {action && <p class="action">{action}</p>}
   </div>
 </section>
 
@@ -46,6 +48,7 @@ const active = current ?? frames[0];
   .copy {
     display: grid;
     align-content: center;
+    justify-items: start;
     gap: var(--space-gutter);
   }
 
@@ -65,6 +68,14 @@ const active = current ?? frames[0];
   li {
     color: var(--text-muted);
     max-width: 36ch;
+  }
+
+  .action {
+    margin: 0;
+    padding: var(--space-inset) var(--space-gutter);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: var(--radius-control);
   }
 
   .media {

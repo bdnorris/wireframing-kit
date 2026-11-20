@@ -93,6 +93,10 @@
           "current": {
             "type": "string",
             "required": false
+          },
+          "action": {
+            "type": "string",
+            "required": false
           }
         },
         "slots": [

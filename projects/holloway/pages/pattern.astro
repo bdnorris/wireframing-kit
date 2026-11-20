@@ -2,6 +2,10 @@
 import Layout from '@layouts/default';
 import ProductDetail from '@c/product-detail';
 import MediaPlaceholder from '@c/media-placeholder';
+import ProductList from '@c/product-list';
+import ProductThumbnail from '@c/product-thumbnail';
+
+const prefix = process.env.PROJECT ? '' : '/holloway';
 ---
 
 <Layout project="holloway" title="Pattern">
@@ -13,4 +17,30 @@ import MediaPlaceholder from '@c/media-placeholder';
   >
     <MediaPlaceholder slot="media" kind="image" label="Stripe field" />
   </ProductDetail>
+  <ProductList heading="Available on..." columns="4">
+    <ProductThumbnail title="Pale cup" detail="Porcelain, thin" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Pale cup" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Bound book" detail="Cloth and thread" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Bound book" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Oak study" detail="Turned oak, small" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Oak study" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Line vessel" detail="Stoneware, ash glaze" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Line vessel" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Soft drawing" detail="Charcoal on cotton" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Soft drawing" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Cast bowl" detail="Bronze, sand cast" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Cast bowl" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Open frame" detail="Ash, open joinery" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Open frame" slot="media" />
+    </ProductThumbnail>
+    <ProductThumbnail title="Folded form" detail="Paper and wire" href={`${prefix}/product`}>
+      <MediaPlaceholder kind="image" label="Folded form" slot="media" />
+    </ProductThumbnail>
+  </ProductList>
 </Layout>

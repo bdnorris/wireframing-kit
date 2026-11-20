@@ -9,7 +9,8 @@
     "title": { "type": "string", "required": true },
     "details": { "type": "array", "items": "string", "required": true },
     "frames": { "type": "array", "items": "string", "required": false },
-    "current": { "type": "string", "required": false }
+    "current": { "type": "string", "required": false },
+    "action": { "type": "string", "required": false }
   },
   "slots": ["media"],
   "related": ["product-thumbnail", "media-placeholder"],
